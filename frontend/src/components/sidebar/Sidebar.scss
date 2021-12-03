@@ -9,6 +9,7 @@
     background-color: $foreground;
     padding: 16px;
     color: $foreground-alt3;
+    transition: all 0.2s ease-out;
 }
 
 .sidebar__middle {
@@ -29,11 +30,46 @@
     cursor: pointer;
 }
 
+.sidebar__profile__collapsed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $foreground-alt;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    transition: 0.2s ease-out;
+    user-select: none;
+    cursor: pointer;
+}
+
+.sidebar__bottom__collapsed {
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
 .sidebar__route {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
+    background-color: $foreground;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.2s ease-out;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: $foreground-alt3;
+}
+
+.sidebar__route__collapsed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: $foreground;
     padding: 12px;
     border-radius: 8px;
@@ -47,6 +83,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.sidebar__top__collapsed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .sidebar__title {
@@ -112,4 +156,20 @@
 
 .profile__name, .route__text {
     display: block;
+}
+
+.sidebar__collapsed {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 5.5rem;
+    height: 100%;
+    background-color: $foreground;
+    padding: 16px;
+    color: $foreground-alt3;
+    transition: all 0.2s ease-out;
+}
+
+.text__collapsed {
+    display: none;
 }
