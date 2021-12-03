@@ -4,6 +4,12 @@ const Sequelize = require('sequelize');
 
 function users(sequelize) {
   return sequelize.define('users', {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false,
+    },
     name: {
       type: Sequelize.STRING
     },
