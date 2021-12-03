@@ -1,7 +1,8 @@
 'use strict';
+require('dotenv').config();
 
 const server = require('./server');
 
-server.listen(8080, () => {
-  console.log(`Server started on port ${8080}..`);
+server.listen(process.env.PORT, () => {
+  console.log(`Server listening on http://localhost:${process.env.PORT}`);
 });
