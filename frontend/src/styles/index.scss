@@ -1,0 +1,25 @@
+@import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: $background;
+}
+
+.app {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
