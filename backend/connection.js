@@ -13,6 +13,6 @@ const sequelize = new Sequelize(
   }
 );
 
-const nameModel = require(`some_model`)(sequelize);
+const userModel = require(`./module/users`)(sequelize);
 
-module.exports = { nameModel };
+module.exports = { userModel };
