@@ -39,10 +39,25 @@ const routes = [
 const Sidebar = () => {
     const history = useLocation();
     const [collapsed, setCollapsed] = useState(false);
+    const [popupOpen, setPopupOpen] = useState(false);
 
     const checkRouteActive = path => {
         return history.pathname === path;
     };
+
+    const handlePopUp = () => {
+        if (collapsed) {
+            setCollapsed(false);
+        }
+        setPopupOpen(!popupOpen);
+    }
+
+    const handleCollapse = () =>{
+        if (popupOpen) {
+            setPopupOpen(false);
+        }
+        setCollapsed(!collapsed);
+    }
 
     return (
         <div className={collapsed ? 'sidebar__collapsed' : 'sidebar'}>
@@ -51,7 +66,7 @@ const Sidebar = () => {
                     <img width={36} alt="Logo" src={Logo} />
                     <span className="sidebar__name">FoxTask</span>
                 </div>
-                <div className="sidebar__collapse" onClick={() => setCollapsed(!collapsed)}>
+                <div className="sidebar__collapse" onClick={handleCollapse}>
                     <FontAwesomeIcon icon={collapsed ? faChevronRight : faChevronLeft} />
                 </div>
             </div>
@@ -67,8 +82,15 @@ const Sidebar = () => {
                     })
                 }
             </div>
-            <div className={collapsed && 'sidebar__bottom__collapsed'}>
+            <div className={collapsed && 'sidebar__bottom__collapsed'} onClick={handlePopUp}>
+            
                 <motion.div className={collapsed ? 'sidebar__profile__collapsed' : 'sidebar__profile'} whileHover="hover">
+                    <div className={ !popupOpen ? "sidebar__settings__popup-disable" : "sidebar__settings__popup"}> {/*sidebar__settings__popup-disable*/}
+                        <ul className="sidebar__settings__container">
+                            <li className="sidebar__settings__item">Settings</li>    
+                            <li className="sidebar__settings__item">Logout</li>    
+                        </ul>
+                    </div>
                     <div className="profile__left">
                         <Gravatar className="profile__picture" size={32} email="yyakovliev02@gmail.com" />
                         <span className={`profile__name ${collapsed && 'text__collapsed'}`}>Jenya</span>
