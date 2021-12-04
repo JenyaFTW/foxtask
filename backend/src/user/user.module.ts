@@ -13,7 +13,8 @@ import { AuthService, UserService } from "./user.service";
       expiresIn: "24h"
     }
     })],
-    providers: [UserController, UserService, AuthService],
+    providers: [UserService, AuthService],
+    controllers: [UserController],
     exports: []
 })
 export class UserModule {}
