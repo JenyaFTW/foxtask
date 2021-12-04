@@ -30,3 +30,7 @@ export function* handleGetUser() {
         yield put(setUser({ user: { email: decoded.email, name: decoded.name }, authToken: authToken }));
     }
 }
+
+export function* handleLogout() {
+    localStorage.removeItem('Auth');
+}

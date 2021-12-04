@@ -19,6 +19,7 @@
 }
 
 .sidebar__profile {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -172,4 +173,43 @@
 
 .text__collapsed {
     display: none;
+}
+
+.sidebar__settings__popup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #1d1d1f;
+    transform: translateY(calc(-100% - 16px));
+}
+
+.sidebar__settings__popup-disable {
+    display: none;
+}
+
+.sidebar__settings__container {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar__settings__item {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    list-style: none;
+    padding: 8px;
+    background-color: #1d1d1f;
+    transition: background-color 0.2s ease-out;
+}
+
+.sidebar__settings__item:hover {
+    background-color: #272729;
+    transition: background-color 0.2s ease-out;
 }

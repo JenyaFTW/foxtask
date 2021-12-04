@@ -6,8 +6,9 @@ import { motion } from 'framer-motion';
 import Logo from '../../assets/logo_white_alt.svg';
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import auth from '../../redux/ducks/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/ducks/auth';
+import { useNavigate } from 'react-router-dom';
 
 const hoverMotion = {
     hover: {
@@ -39,13 +40,35 @@ const routes = [
 ];
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const history = useLocation();
     const [collapsed, setCollapsed] = useState(false);
+    const [popupOpen, setPopupOpen] = useState(false);
 
     const user = useSelector(state => state.auth.user);
 
     const checkRouteActive = path => {
         return history.pathname === path;
+    };
+
+    const handlePopUp = () => {
+        if (collapsed) {
+            setCollapsed(false);
+        }
+        setPopupOpen(!popupOpen);
+    };
+
+    const handleCollapse = () => {
+        if (popupOpen) {
+            setPopupOpen(false);
+        }
+        setCollapsed(!collapsed);
+    };
+    
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/login');
     };
 
     return (
@@ -55,7 +78,7 @@ const Sidebar = () => {
                     <img width={36} alt="Logo" src={Logo} />
                     <span className="sidebar__name">FoxTask</span>
                 </div>
-                <div className="sidebar__collapse" onClick={() => setCollapsed(!collapsed)}>
+                <div className="sidebar__collapse" onClick={handleCollapse}>
                     <FontAwesomeIcon icon={collapsed ? faChevronRight : faChevronLeft} />
                 </div>
             </div>
@@ -71,8 +94,15 @@ const Sidebar = () => {
                     })
                 }
             </div>
-            <div className={collapsed && 'sidebar__bottom__collapsed'}>
+            <div className={collapsed && 'sidebar__bottom__collapsed'} onClick={handlePopUp}>
+            
                 <motion.div className={collapsed ? 'sidebar__profile__collapsed' : 'sidebar__profile'} whileHover="hover">
+                    <div className={ !popupOpen ? "sidebar__settings__popup-disable" : "sidebar__settings__popup"}> {/*sidebar__settings__popup-disable*/}
+                        <ul className="sidebar__settings__container">
+                            <li className="sidebar__settings__item">Settings</li>    
+                            <li className="sidebar__settings__item" onClick={handleLogout}>Logout</li>    
+                        </ul>
+                    </div>
                     <div className="profile__left">
                         <Gravatar className="profile__picture" size={32} email={user && user.email} />
                         <span className={`profile__name ${collapsed && 'text__collapsed'}`}>{user && user.name}</span>

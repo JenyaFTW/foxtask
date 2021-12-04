@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router";
 import { getUser } from "../redux/ducks/auth";
-import Calendar from "../views/Calendar";
-import Home from '../views/Home';
+import Calendar from "../views/Calendar/Calendar";
+import Home from '../views/Home/Home';
 import Login from "../views/Login";
 import Signup from "../views/Signup";
-import Tasks from "../views/Tasks";
+import Tasks from "../views/Tasks/Tasks";
 import Sidebar from "./sidebar/Sidebar";
 
 const SidebarLayout = ({ children }) => (

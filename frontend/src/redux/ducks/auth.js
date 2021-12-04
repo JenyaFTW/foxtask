@@ -40,6 +40,10 @@ export const setUser = payload => ({
     payload
 });
 
+export const logout = () => ({
+    type: Types.Auth.LOGOUT
+});
+
 const initialState = {
     user: null,
     authToken: null,
@@ -55,6 +59,8 @@ export default (state = initialState, action) => {
             return { ...state, loginError: action.payload, loginSuccess: false };
         case Types.Auth.SET_USER:
             return { ...state, user: action.payload.user, authToken: action.payload.user };
+        case Types.Auth.LOGOUT:
+            return { ...state, user: null, authToken: null };
         default:
             return state;
     }

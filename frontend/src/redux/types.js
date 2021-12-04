@@ -6,7 +6,8 @@ const Auth = {
     SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
     SIGNUP_FAIL: 'SIGNUP_FAIL',
     GET_USER: 'GET_USER',
-    SET_USER: 'SET_USER'
+    SET_USER: 'SET_USER',
+    LOGOUT: 'LOGOUT'
 };
 
 export const Types = {
