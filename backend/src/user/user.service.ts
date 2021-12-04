@@ -72,7 +72,7 @@ export class UserService {
     async createUser(body: userCreateBody): Promise<void> {
         try {
             const userExists = await this.checkExistsUser(body.email)
-            if (!userExists && this.helper.checkValidBodyUser(body)) {
+            if (!userExists) {
                 const password = await this.authService.registration(body);
                 const bodyToDB: userCreateBody = {
                     name: body.name,
