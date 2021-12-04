@@ -22,21 +22,60 @@ const Tasks = () => {
                 </div>
             </div>
             <div className="tasks__body">
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
+                <div className="tasks__item">
+                    <div className="tasks__title">
+                        <div className="tasks__name">Task</div>
+                        <div className="tasks__id">#5</div>
+                    </div>
+                    <div className="tasks__due">Due to 12/4/2021</div>
+                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
+                    <div className="tasks__tags">red, grey, blue</div>
+                </div>
             </div>
         </div>
     );
