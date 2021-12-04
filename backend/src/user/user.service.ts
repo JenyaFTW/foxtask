@@ -60,7 +60,7 @@ export class UserService {
                     return token;
                 }
             } else {
-                throw new HttpException('Invalid email/password', 502);
+                throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
             }
         } catch (err) {
             throw new HttpException(err.message, err.status);
