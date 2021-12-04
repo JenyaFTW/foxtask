@@ -5,13 +5,14 @@ import * as bcrypt from "bcryptjs";
 import { User } from "./user.entity";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
+import { HelperService } from "src/helper/helper.service";
 
 @Injectable()
-export class AuthService {
+export class Auth {
     constructor(private jwtService: JwtService) {}
 
     async registration(body: userCreateBody | userUpdateBody): Promise<string> {
-        const hashPassword: string = await bcrypt.hash(body.password, 500);
+        const hashPassword: string = await bcrypt.hash(body.password, 5);
         return hashPassword;
     }
 
@@ -26,14 +27,16 @@ export class UserService {
     constructor(
         @InjectRepository(User)
         private readonly userRepository: Repository<User>,
-        private readonly authService: AuthService
+        private readonly authService: Auth,
+        private readonly helper: HelperService,
+        private jwtService: JwtService
     ) {}
 
     async checkExistsUser(email: string): Promise<userCreateBody> {
         try {
             const user = await this.userRepository.findOne({
                 where: {
-                    email: email
+                    email
                 }
             })
             return user;
@@ -45,7 +48,8 @@ export class UserService {
     async loginUser(body: userLoginBody): Promise<string> {
         try {
             const userExists = await this.checkExistsUser(body.email)
-            if(userExists) {
+            const passwordFlag = bcrypt.compare(body.password, userExists.password);
+            if(userExists && passwordFlag) {
                 const resBody = {
                     name: userExists.name,
                     email: userExists.email
@@ -61,8 +65,7 @@ export class UserService {
     async createUser(body: userCreateBody): Promise<void> {
         try {
             const userExists = await this.checkExistsUser(body.email)
-
-            if(!userExists) {
+            if(!userExists && this.helper.checkValidBodyUser(body)) {
                 const password = await this.authService.registration(body);
                 const bodyToDB: userCreateBody = {
                     name: body.name,
@@ -78,18 +81,22 @@ export class UserService {
         }
     }
 
-    async updateUser(body: userUpdateBody, id: string): Promise<void> {
+    async updateUser(body: userUpdateBody, header: object): Promise<void> {
         try {
-            await this.userRepository.update({id: Number(id)}, body);
+            const token = header['authorization'].split(' ')[1];
+            const verToken = this.jwtService.verify(token);
+            await this.userRepository.update({email: verToken.email}, body);
             return;
         } catch(err) {
             throw new HttpException(`Error update user -> ${err}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    async deleteUser(id: string):  Promise<void> {
+    async deleteUser(header: object):  Promise<void> {
         try {
-            await this.userRepository.delete(Number(id));
+            const token = header['authorization'].split(' ')[1];
+            const verToken = this.jwtService.verify(token);
+            await this.userRepository.delete({email: verToken.email});
             return;
         } catch(err) {
             throw new HttpException(`Error delete user -> ${err}`, HttpStatus.INTERNAL_SERVER_ERROR);

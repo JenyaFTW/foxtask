@@ -14,14 +14,14 @@ export class HelperService {
         const dateNow = new Date();
 
         for(const key in body) {
-            if(availableValue[key] && !availableValue[key].includes(body[key])) return false;
+            if(availableValue[key] && !availableValue[key].includes(body[key].toLowerCase())) return false;
             else if(key === 'deadline' && body[key] < dateNow) return false;
             else if(key === 'tag') {
                 for(const elem in body[key]) {
                     if(elem.length > 10) return false;
                 }
             }
-            else if(key === 'difficulty' && +body[key] <= 0) return false;
+            else if(key === 'difficulty' && body[key] <= 0) return false;
         }
     }
 
@@ -42,7 +42,6 @@ export class HelperService {
                 flag = false;
             }
         }
-
         return flag;
     }
 
@@ -58,7 +57,20 @@ export class HelperService {
         return fields;
     }
 
-    async prepareBodyToCreate(body: createTaskBody | updateTaskBody) {
-        
+    async prepareTaskBodyToAdd(body: createTaskBody | updateTaskBody) {
+        const intField = ['importance']
+        const valueImportance = ['low', 'medium', 'high']
+
+        const resBody = {}
+        for(const key in body) {
+            if(intField.includes(key)) {
+                resBody[key] = valueImportance.indexOf(body[key])+1;
+                continue;
+            }
+            resBody[key] = body[key];
+            continue;
+        }
+
+        return resBody;
     }
 }
