@@ -1,11 +1,20 @@
 import './Tasks.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Schedule from './Schedule';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTasks } from '../../redux/ducks/task';
 
 const Tasks = () => {
+    const dispatch = useDispatch();
     const [scheduleOpen, setScheduleOpen] = useState(false);
+    const tasks = useSelector(state => state.task.tasks);
+
+    useEffect(() => {
+        dispatch(getTasks());
+    }, []);
+
     return (
         <div id="tasks">
             <div className="tasks__header">
