@@ -48,7 +48,7 @@ const Sidebar = () => {
         <div className={collapsed ? 'sidebar__collapsed' : 'sidebar'}>
             <div className={collapsed ? 'sidebar__top__collapsed' : 'sidebar__top'}>
                 <div className={`sidebar__title ${collapsed && 'text__collapsed'}`}>
-                    <img width={36} src={Logo} />
+                    <img width={36} alt="Logo" src={Logo} />
                     <span className="sidebar__name">FoxTask</span>
                 </div>
                 <div className="sidebar__collapse" onClick={() => setCollapsed(!collapsed)}>
@@ -59,7 +59,7 @@ const Sidebar = () => {
                 {
                     routes.map(el => {
                         return (
-                            <Link to={el.path} className={`sidebar__route ${checkRouteActive(el.path) && 'sidebar__route__active'} ${collapsed && 'sidebar__route__collapsed'}`}>
+                            <Link to={el.path} key={el.name} className={`sidebar__route ${checkRouteActive(el.path) && 'sidebar__route__active'} ${collapsed && 'sidebar__route__collapsed'}`}>
                                 <div className="route__icon"><FontAwesomeIcon icon={el.logo} /></div>
                                 <span className={`route__text ${collapsed && 'text__collapsed'}`}>{ el.name }</span>
                             </Link>
