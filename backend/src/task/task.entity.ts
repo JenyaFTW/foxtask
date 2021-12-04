@@ -11,8 +11,8 @@ export class Task {
     @Column()
     description: string;
 
-    @Column()
-    tags?: string[];
+    @Column({default: null})
+    tag?: string;
 
     @Column()
     difficulty: number;
@@ -25,6 +25,9 @@ export class Task {
 
     @Column()
     type: string;
+
+    @Column()
+    id_user: number;
 }
 
 @Entity("subtasks")

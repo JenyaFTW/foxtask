@@ -1,4 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from "@nestjs/common";
+import { CreateTaskBody } from "./dto/create_task.dto";
+import { UpdateTaskBody } from "./dto/update_task.dto";
+import { queryTaskGet } from "./task.interface";
 import { TaskService } from "./task.service";
 
 @Controller('task') 
@@ -7,7 +10,7 @@ export class TaskController {
 
     @Get()
     @HttpCode(HttpStatus.OK)
-    async getAllTasks(@Query() queryDto): Promise<object> {
+    async getAllTasks(@Query() queryDto: queryTaskGet): Promise<object> {
         return this.taskService.getAllTasks(queryDto);
     }
 
@@ -19,13 +22,13 @@ export class TaskController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    async createTask(@Body() createTaskDto): Promise<void> {
+    async createTask(@Body() createTaskDto: CreateTaskBody): Promise<void> {
         return this.taskService.createTask(createTaskDto);
     }
 
     @Patch(':id')
     @HttpCode(HttpStatus.CREATED)
-    async updateUser(@Body() updateTaskDto, @Param('id') id: string): Promise<void> {
+    async updateUser(@Body() updateTaskDto: UpdateTaskBody, @Param('id') id: string): Promise<void> {
         return await this.taskService.updateTask(updateTaskDto, id);
     }
 
