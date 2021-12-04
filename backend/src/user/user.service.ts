@@ -50,7 +50,7 @@ export class UserService {
             const userExists = await this.checkExistsUser(body.email);
 
             if (userExists) {
-                const passwordFlag = bcrypt.compare(body.password, userExists.password);
+                const passwordFlag = await bcrypt.compare(body.password, userExists.password);
                 if (userExists && passwordFlag) {
                     const resBody = {
                         name: userExists.name,
