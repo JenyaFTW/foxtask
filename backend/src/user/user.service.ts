@@ -51,13 +51,15 @@ export class UserService {
 
             if (userExists) {
                 const passwordFlag = await bcrypt.compare(body.password, userExists.password);
-                if (userExists && passwordFlag) {
+                if (passwordFlag) {
                     const resBody = {
                         name: userExists.name,
                         email: userExists.email
                     }
                     const token = await this.authService.generateToken(resBody);
                     return token;
+                } else {
+                    throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
                 }
             } else {
                 throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
