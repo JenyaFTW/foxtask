@@ -1,9 +1,11 @@
 import './Tasks.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import Schedule from './Schedule';
 
 const Tasks = () => {
-
+    const [scheduleOpen, setScheduleOpen] = useState(false);
     return (
         <div id="tasks" className="tasks__wrapper">
             <div className="tasks__header">
@@ -15,7 +17,7 @@ const Tasks = () => {
                         <span>Create Task</span>
                         <FontAwesomeIcon className="header__icon" icon={faPlusSquare} />
                     </div>
-                    <div className="header__generate header__button">
+                    <div className="header__generate header__button" onClick={() => setScheduleOpen(!scheduleOpen)}>
                         <span>Generate Schedule</span>
                         <FontAwesomeIcon className="header__icon" icon={faCalendarAlt} />
                     </div>
@@ -31,52 +33,9 @@ const Tasks = () => {
                     <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
                     <div className="tasks__tags">red, grey, blue</div>
                 </div>
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
             </div>
+            { scheduleOpen && <Schedule /> }
+            
         </div>
     );
 };
