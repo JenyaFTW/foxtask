@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+#home {
+    padding: 64px;
+    width: 100%;
+}
+
+.top__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.grid__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 32px;
+    background: rgb(255, 161, 37);
+    background: linear-gradient(90deg, rgba(255, 161, 37, 1) 0%, rgba(255, 179, 0, 1) 32%, rgba(255, 160, 6, 1) 100%);
+    background-color: $foreground;
+    border-radius: 16px;
+    color: white;
+}
+
+.item__title {
+    font-weight: 600;
+}
+
+.home__title {
+    color: $foreground-alt2;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
