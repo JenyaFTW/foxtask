@@ -1,4 +1,7 @@
-import { Routes, Route } from "react-router";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route, useNavigate } from "react-router";
+import { getUser } from "../redux/ducks/auth";
 import Calendar from "../views/Calendar";
 import Home from '../views/Home';
 import Login from "../views/Login";
@@ -14,6 +17,17 @@ const SidebarLayout = ({ children }) => (
 );
 
 const App = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.auth.user);
+
+    useEffect(() => {
+        if (!user && !localStorage.getItem('Auth')) {
+            navigate('/login');
+        }
+        dispatch(getUser());
+    }, []);
+
     return (
         <div className="app">
             <Routes>

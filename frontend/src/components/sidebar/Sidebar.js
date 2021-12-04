@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import Logo from '../../assets/logo_white_alt.svg';
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import auth from '../../redux/ducks/auth';
 
 const hoverMotion = {
     hover: {
@@ -40,6 +42,8 @@ const Sidebar = () => {
     const history = useLocation();
     const [collapsed, setCollapsed] = useState(false);
 
+    const user = useSelector(state => state.auth.user);
+
     const checkRouteActive = path => {
         return history.pathname === path;
     };
@@ -70,8 +74,8 @@ const Sidebar = () => {
             <div className={collapsed && 'sidebar__bottom__collapsed'}>
                 <motion.div className={collapsed ? 'sidebar__profile__collapsed' : 'sidebar__profile'} whileHover="hover">
                     <div className="profile__left">
-                        <Gravatar className="profile__picture" size={32} email="yyakovliev02@gmail.com" />
-                        <span className={`profile__name ${collapsed && 'text__collapsed'}`}>Jenya</span>
+                        <Gravatar className="profile__picture" size={32} email={user && user.email} />
+                        <span className={`profile__name ${collapsed && 'text__collapsed'}`}>{user && user.name}</span>
                     </div>
                     <motion.div
                         className={`profile__right ${collapsed && 'text__collapsed'}`}

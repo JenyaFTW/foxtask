@@ -30,6 +30,16 @@ export const signupFail = payload => ({
     payload
 });
 
+export const getUser = payload => ({
+    type: Types.Auth.GET_USER,
+    payload
+});
+
+export const setUser = payload => ({
+    type: Types.Auth.SET_USER,
+    payload
+});
+
 const initialState = {
     user: null,
     authToken: null,
@@ -40,9 +50,11 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case Types.Auth.LOGIN_SUCCESS:
-            return { ...state, loginSuccess: true, loginError: false, user: action.payload };
+            return { ...state, loginSuccess: true, loginError: false, user: action.payload.user, authToken: action.payload.authToken };
         case Types.Auth.LOGIN_FAIL:
             return { ...state, loginError: action.payload, loginSuccess: false };
+        case Types.Auth.SET_USER:
+            return { ...state, user: action.payload.user, authToken: action.payload.user };
         default:
             return state;
     }
