@@ -1,4 +1,7 @@
+import './Tasks.scss';
+
 const Tasks = () => {
+
     return (
         <div id="tasks">
             Tasks

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
-import Calendar from "../views/Calendar";
-import Home from '../views/Home';
-import Tasks from "../views/Tasks";
+import Home from '../views/Home/Home';
+import Tasks from "../views/Tasks/Tasks";
+import Calendar from "../views/Calendar/Calendar";
 import Sidebar from "./sidebar/Sidebar";
 
 const App = () => {
