@@ -48,7 +48,9 @@ const initialState = {
     user: null,
     authToken: null,
     loginSuccess: false,
-    loginError: false
+    loginError: false,
+    signupSuccess: false,
+    signupError: false
 };
 
 export default (state = initialState, action) => {
@@ -57,6 +59,10 @@ export default (state = initialState, action) => {
             return { ...state, loginSuccess: true, loginError: false, user: action.payload.user, authToken: action.payload.authToken };
         case Types.Auth.LOGIN_FAIL:
             return { ...state, loginError: action.payload, loginSuccess: false };
+        case Types.Auth.SIGNUP_SUCCESS:
+            return { ...state, loginSuccess: false, loginError: false, signupSuccess: true, signupError: false };
+        case Types.Auth.SIGNUP_FAIL:
+            return { ...state, loginSuccess: false, loginError: false, signupSuccess: false, signupError: action.payload };
         case Types.Auth.SET_USER:
             return { ...state, user: action.payload.user, authToken: action.payload.user };
         case Types.Auth.LOGOUT:

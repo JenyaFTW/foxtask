@@ -3,13 +3,16 @@ import Logo from '../assets/logo_white_alt.svg';
 import { Link } from 'react-router-dom';
 import { signup } from '../redux/ducks/auth';
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Signup = () => {
     const usernameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
+
+    const signupError = useSelector(state => state.auth.signupError);
+    const signupSuccess = useSelector(state => state.auth.signupSuccess);
 
     const handleSignup = () => {
         const name = usernameRef.current.value;
@@ -20,6 +23,10 @@ const Signup = () => {
 
     return (
         <div className="login">
+            <div className={`display__none ${signupError ? 'login__error': ''} ${signupSuccess ? 'login__success' : ''}`}>
+                { signupError ? signupError.response.data.message : '' }
+                { signupSuccess ? 'Successfully signed up' : '' }
+            </div>
             <div className="login__modal">
                 <img width={64} alt="Logo" src={Logo} />
                 <div className="login__title">Signup</div>
