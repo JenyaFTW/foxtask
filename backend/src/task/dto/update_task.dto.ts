@@ -7,6 +7,7 @@ export class UpdateTaskBody {
     difficulty?: number;
     importance?: string;
     deadline?: Date;
+    estimated_time: number;
     type?: string;
     subtask?: subtask;
 }

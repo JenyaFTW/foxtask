@@ -26,8 +26,8 @@ export class TaskController {
     @Post()
     @UseGuards(AuthService)
     @HttpCode(HttpStatus.CREATED)
-    async createTask(@Body() createTaskDto: CreateTaskBody): Promise<void> {
-        return this.taskService.createTask(createTaskDto);
+    async createTask(@Body() createTaskDto: CreateTaskBody, @Headers() header: object): Promise<void> {
+        return this.taskService.createTask(createTaskDto, header);
     }
 
     @Patch(':id')

@@ -1,3 +1,6 @@
+import './Calendar.scss';
+
+
 const Calendar = () => {
     return (
         <div id="calendar">

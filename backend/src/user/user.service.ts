@@ -9,7 +9,7 @@ import { HelperService } from "src/helper/helper.service";
 
 @Injectable()
 export class Auth {
-    constructor(private jwtService: JwtService) {}
+    constructor(private jwtService: JwtService) { }
 
     async registration(body: userCreateBody | userUpdateBody): Promise<string> {
         const hashPassword: string = await bcrypt.hash(body.password, 5);
@@ -17,7 +17,7 @@ export class Auth {
     }
 
     async generateToken(user: userCreateBody | userUpdateBody): Promise<string> {
-        const token = {name: user.name, email: user.email};
+        const token = { name: user.name, email: user.email };
         return this.jwtService.signAsync(token);
     }
 }
@@ -30,7 +30,7 @@ export class UserService {
         private readonly authService: Auth,
         private readonly helper: HelperService,
         private jwtService: JwtService
-    ) {}
+    ) { }
 
     async checkExistsUser(email: string): Promise<userCreateBody> {
         try {
@@ -40,24 +40,31 @@ export class UserService {
                 }
             })
             return user;
-        } catch(err) {
+        } catch (err) {
             throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     async loginUser(body: userLoginBody): Promise<string> {
         try {
-            const userExists = await this.checkExistsUser(body.email)
-            const passwordFlag = bcrypt.compare(body.password, userExists.password);
-            if(userExists && passwordFlag) {
-                const resBody = {
-                    name: userExists.name,
-                    email: userExists.email
+            const userExists = await this.checkExistsUser(body.email);
+
+            if (userExists) {
+                const passwordFlag = await bcrypt.compare(body.password, userExists.password);
+                if (passwordFlag) {
+                    const resBody = {
+                        name: userExists.name,
+                        email: userExists.email
+                    }
+                    const token = await this.authService.generateToken(resBody);
+                    return token;
+                } else {
+                    throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
                 }
-                const token = await this.authService.generateToken(resBody);
-                return token;
+            } else {
+                throw new HttpException('Users email already exists', HttpStatus.BAD_REQUEST);
             }
-        } catch(err) {
+        } catch (err) {
             throw new HttpException(err.message, err.status);
         }
     }
@@ -65,7 +72,7 @@ export class UserService {
     async createUser(body: userCreateBody): Promise<void> {
         try {
             const userExists = await this.checkExistsUser(body.email)
-            if(!userExists && this.helper.checkValidBodyUser(body)) {
+            if(!userExists) {
                 const password = await this.authService.registration(body);
                 const bodyToDB: userCreateBody = {
                     name: body.name,
@@ -76,7 +83,7 @@ export class UserService {
                 return;
             }
             throw new HttpException('Email already exists', HttpStatus.BAD_REQUEST);
-        } catch(err) {
+        } catch (err) {
             throw new HttpException(err.message, err.status);
         }
     }
@@ -85,20 +92,20 @@ export class UserService {
         try {
             const token = header['authorization'].split(' ')[1];
             const verToken = this.jwtService.verify(token);
-            await this.userRepository.update({email: verToken.email}, body);
+            await this.userRepository.update({ email: verToken.email }, body);
             return;
-        } catch(err) {
+        } catch (err) {
             throw new HttpException(`Error update user -> ${err}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    async deleteUser(header: object):  Promise<void> {
+    async deleteUser(header: object): Promise<void> {
         try {
             const token = header['authorization'].split(' ')[1];
             const verToken = this.jwtService.verify(token);
-            await this.userRepository.delete({email: verToken.email});
+            await this.userRepository.delete({ email: verToken.email });
             return;
-        } catch(err) {
+        } catch (err) {
             throw new HttpException(`Error delete user -> ${err}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
