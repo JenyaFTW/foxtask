@@ -10,6 +10,7 @@ export interface createTaskBody {
     readonly difficulty: number,
     readonly importance?: string,
     readonly deadline: Date,
+    readonly estimated_time: number,
     readonly type: string,
     readonly subtask?: subtask,
 }
@@ -20,6 +21,7 @@ export interface updateTaskBody {
     readonly tag?: string[],
     readonly difficulty?: number,
     readonly importance?: string,
+    readonly estimated_time: number,
     readonly deadline?: Date,
     readonly type?: string,
     readonly subtask?: subtask,
