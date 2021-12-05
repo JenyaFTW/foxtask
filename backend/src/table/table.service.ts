@@ -14,7 +14,7 @@ export class TableService {
     async genTimetable(table: number[][]) {
         try {
             const tasks = await this.taskRepository.find();
-            const resTable = await this.generation.genTable(table['table'], tasks);
+            const resTable = await this.generation.genTable(table, tasks);
             return resTable;
         } catch(err) {
             throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
