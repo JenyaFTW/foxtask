@@ -62,7 +62,7 @@ export class UserService {
                     throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
                 }
             } else {
-                throw new HttpException('Invalid email/password', HttpStatus.BAD_REQUEST);
+                throw new HttpException('Users email already exists', HttpStatus.BAD_REQUEST);
             }
         } catch (err) {
             throw new HttpException(err.message, err.status);
@@ -72,7 +72,7 @@ export class UserService {
     async createUser(body: userCreateBody): Promise<void> {
         try {
             const userExists = await this.checkExistsUser(body.email)
-            if (!userExists) {
+            if(!userExists) {
                 const password = await this.authService.registration(body);
                 const bodyToDB: userCreateBody = {
                     name: body.name,

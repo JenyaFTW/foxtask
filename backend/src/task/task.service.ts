@@ -1,6 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
 import { InjectRepository } from "@nestjs/typeorm";
 import { HelperService } from "src/helper/helper.service";
+import { User } from "src/user/user.entity";
 import { Repository } from "typeorm";
 import { Subtask, Task } from "./task.entity";
 import { createTaskBody, queryTaskGet, updateTaskBody } from "./task.interface";
@@ -12,7 +14,10 @@ export class TaskService {
         private readonly taskRepository: Repository<Task>,
         @InjectRepository(Subtask)
         private readonly subtaskRepository: Repository<Subtask>,
-        private readonly helper: HelperService
+        @InjectRepository(User)
+        private readonly userRepository: Repository<User>,
+        private readonly helper: HelperService,
+        private jwtService: JwtService
         ) {}
     
     async getAllTasks(query: queryTaskGet): Promise<object> {
@@ -44,10 +49,20 @@ export class TaskService {
         }
     }
 
-    async createTask(body: createTaskBody): Promise<void> {
+    async createTask(body: createTaskBody, header: object): Promise<void> {
         try {
             if(this.helper.validationTaskBody(body)) {
+                const token = header['authorization'].split(' ')[1];
+                const verToken = this.jwtService.verify(token);
+
+                const user = await this.userRepository.findOne({
+                    where: {
+                        email: verToken.email
+                    }
+                })
+                
                 const resBody = await this.helper.prepareTaskBodyToAdd(body);
+                resBody['id_user'] = user.id;
                 await this.taskRepository.save(resBody);
                 return;
             }
