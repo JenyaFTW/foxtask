@@ -2,10 +2,11 @@ import './Tasks.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import Schedule from './Schedule';
 
+import AddTask from './addtask';
 const Tasks = () => {
-    const [scheduleOpen, setScheduleOpen] = useState(false);
+    const [popupOpen, setPopupOpen] = useState(false);
+
     return (
         <div id="tasks" className="tasks__wrapper">
             <div className="tasks__header">
@@ -13,29 +14,24 @@ const Tasks = () => {
                     Sort by
                 </div>
                 <div className="header__action">
-                    <div className="header__new header__button">
+                    <div className="header__new header__button" onClick={() => {setPopupOpen(!popupOpen);}}>
                         <span>Create Task</span>
                         <FontAwesomeIcon className="header__icon" icon={faPlusSquare} />
                     </div>
-                    <div className="header__generate header__button" onClick={() => setScheduleOpen(!scheduleOpen)}>
+                    { popupOpen && <AddTask popupOpen={popupOpen} setPopupOpen={setPopupOpen} />}
+                    <div className="header__generate header__button">
                         <span>Generate Schedule</span>
                         <FontAwesomeIcon className="header__icon" icon={faCalendarAlt} />
                     </div>
                 </div>
             </div>
             <div className="tasks__body">
-                <div className="tasks__item">
-                    <div className="tasks__title">
-                        <div className="tasks__name">Task</div>
-                        <div className="tasks__id">#5</div>
-                    </div>
-                    <div className="tasks__due">Due to 12/4/2021</div>
-                    <div className="tasks__desc">adfgjadflvbalvxmzcvnadfkjb</div>
-                    <div className="tasks__tags">red, grey, blue</div>
-                </div>
+                <div className="tasks__item"></div>
+                <div className="tasks__item"></div>
+                <div className="tasks__item"></div>
+                <div className="tasks__item"></div>
+                <div className="tasks__item"></div>
             </div>
-            { scheduleOpen && <Schedule /> }
-            
         </div>
     );
 };
