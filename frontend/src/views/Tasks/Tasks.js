@@ -35,14 +35,16 @@ const Tasks = () => {
                 </div>
             </div>
             <div className="tasks__body">
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
-                <div className="tasks__item"></div>
+                {
+                    tasks.length > 0 && tasks.map(el => {
+                        return (
+                            <div className="tasks__item"></div>
+                        );
+                    })
+                }
             </div>
             { popupOpen && <AddTask popupOpen={popupOpen} setPopupOpen={setPopupOpen} />}
-            { scheduleOpen && <Schedule scheduleOpen={scheduleOpen} setScheduleOpen={setScheduleOpen}/> }
+            { scheduleOpen && <Schedule setScheduleOpen={setScheduleOpen}/> }
         </div>
     );
 };

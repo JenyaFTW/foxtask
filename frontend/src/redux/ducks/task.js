@@ -29,14 +29,49 @@ export const createTaskSuccess = payload => ({
     payload
 });
 
+export const generateTimetable = payload => ({
+    type: Types.Tasks.GENERATE_TIMETABLE,
+    payload
+});
+
+export const generateTimetableFail = payload => ({
+    type: Types.Tasks.GENERATE_TIMETABLE_FAIL,
+    payload
+});
+
+export const generateTimetableSuccess = payload => ({
+    type: Types.Tasks.GENERATE_TIMETABLE_SUCCESS,
+    payload
+});
+
+export const setWorkTime = payload => ({
+    type: Types.Tasks.SET_WORK_TIME,
+    payload
+});
+
+export const getWorkTime = () => ({
+    type: Types.Tasks.GET_WORK_TIME
+});
+
 const initialState = {
-    tasks: []
+    tasks: [],
+    workTime: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case Types.Auth.SET_TASKS:
+        case Types.Tasks.SET_TASKS:
             return { ...state, tasks: action.payload };
+        case Types.Tasks.SET_WORK_TIME:
+            return { ...state, workTime: action.payload };
         default:
             return state;
     }

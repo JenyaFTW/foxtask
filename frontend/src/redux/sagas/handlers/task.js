@@ -1,6 +1,6 @@
 import { put, select } from "@redux-saga/core/effects";
 import axios from "axios";
-import { createTaskFail, getTasksFail, setTasks } from "../../ducks/task";
+import { createTaskFail, createTaskSuccess, getTasksFail, setTasks, setWorkTime } from "../../ducks/task";
 
 export function* handleGetTasks() {
     try {
@@ -17,10 +17,29 @@ export function* handleGetTasks() {
     }
 }
 
-export function* handleCreateTask() {
+export function* handleCreateTask({ payload }) {
     try {
-
+        const authToken = yield select(state => state.auth.authToken);
+        const res = yield axios.post('http://api.foxtask.xyz:3000/task', payload, {
+            headers: {
+                'Authorization': `bearer ${authToken}`
+            }
+        });
+        yield put(createTaskSuccess(res.data));
     } catch (ex) {
         yield put(createTaskFail(ex));
     }
+}
+
+export function* handleGenerateTimetable({ payload }) {
+    yield put(setWorkTime(payload));
+}
+
+export function* handleGetWorkTime() {
+    const workTime = JSON.parse(localStorage.getItem('workTime'));
+    yield put(setWorkTime(workTime));
+}
+
+export function* handleSetWorkTime({ payload }) {
+    localStorage.setItem('workTime', JSON.stringify(payload));
 }
