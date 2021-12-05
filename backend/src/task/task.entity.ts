@@ -27,6 +27,9 @@ export class Task {
     type: string;
 
     @Column()
+    estimated_time: number;
+
+    @Column()
     id_user: number;
 
     @OneToMany(() => Subtask, subtask => subtask.task, {cascade: true}) 
