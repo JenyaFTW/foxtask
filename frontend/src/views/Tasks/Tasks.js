@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import Schedule from './Schedule';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasks } from '../../redux/ducks/task';
-import { useState } from 'react'
 
 import AddTask from './addtask';
 const Tasks = () => {
@@ -29,8 +28,7 @@ const Tasks = () => {
                         <span>Create Task</span>
                         <FontAwesomeIcon className="header__icon" icon={faPlusSquare} />
                     </div>
-                    { popupOpen && <AddTask popupOpen={popupOpen} setPopupOpen={setPopupOpen} />}
-                    <div className="header__generate header__button">
+                    <div className="header__generate header__button" onClick={() => {setScheduleOpen(!scheduleOpen)}}>
                         <span>Generate Schedule</span>
                         <FontAwesomeIcon className="header__icon" icon={faCalendarAlt} />
                     </div>
@@ -43,6 +41,8 @@ const Tasks = () => {
                 <div className="tasks__item"></div>
                 <div className="tasks__item"></div>
             </div>
+            { popupOpen && <AddTask popupOpen={popupOpen} setPopupOpen={setPopupOpen} />}
+            { scheduleOpen && <Schedule scheduleOpen={scheduleOpen} setScheduleOpen={setScheduleOpen}/> }
         </div>
     );
 };

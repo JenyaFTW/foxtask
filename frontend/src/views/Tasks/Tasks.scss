@@ -40,6 +40,7 @@
     box-shadow: 0 6px 12px rgba(255, 161, 37, 0);
     transition: all 250ms ease;
     cursor: pointer;
+    user-select: none;
 }
 
 .header__button:hover {
