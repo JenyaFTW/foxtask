@@ -12,6 +12,7 @@ export function* watcherSaga() {
     yield takeLatest(Types.Tasks.GET_TASKS, handleGetTasks);
     yield takeLatest(Types.Tasks.CREATE_TASK, handleCreateTask);
     yield takeLatest(Types.Tasks.GENERATE_TIMETABLE, handleGenerateTimetable);
+    yield takeLatest(Types.Tasks.CREATE_TASK_SUCCESS, handleGetTasks);
 
     yield takeLatest(Types.Tasks.SET_WORK_TIME, handleSetWorkTime);
     yield takeLatest(Types.Tasks.GET_WORK_TIME, handleGetWorkTime);

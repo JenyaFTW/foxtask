@@ -100,7 +100,7 @@ const Sidebar = () => {
                     <div className={ !popupOpen ? "sidebar__settings__popup-disable" : "sidebar__settings__popup"}> {/*sidebar__settings__popup-disable*/}
                         <ul className="sidebar__settings__container">
                             <li className="sidebar__settings__item">Settings</li>
-                            <li className="sidebar__settings__item">Logout</li>
+                            <li className="sidebar__settings__item" onClick={handleLogout}>Logout</li>
                         </ul>
                     </div>
                     <div className="profile__left">

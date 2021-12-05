@@ -33,11 +33,20 @@ export function* handleCreateTask({ payload }) {
 
 export function* handleGenerateTimetable({ payload }) {
     yield put(setWorkTime(payload));
+    const authToken = yield select(state => state.auth.authToken);
+    const res = yield axios.post('http://api.foxtask.xyz:3000/table', { table: payload }, {
+        headers: {
+            'Authorization': `bearer ${authToken}`
+        }
+    });
+    console.log(res.data);
 }
 
 export function* handleGetWorkTime() {
     const workTime = JSON.parse(localStorage.getItem('workTime'));
-    yield put(setWorkTime(workTime));
+    if (workTime) {
+        yield put(setWorkTime(workTime));
+    }
 }
 
 export function* handleSetWorkTime({ payload }) {

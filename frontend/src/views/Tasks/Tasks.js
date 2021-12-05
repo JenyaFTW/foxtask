@@ -4,14 +4,14 @@ import { faCalendarAlt, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import Schedule from './Schedule';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasks } from '../../redux/ducks/task';
+import task, { getTasks } from '../../redux/ducks/task';
 
 import AddTask from './addtask';
 const Tasks = () => {
     const dispatch = useDispatch();
     const [scheduleOpen, setScheduleOpen] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
-    const tasks = useSelector(state => state.task.tasks);
+    const tasks = useSelector(state => state.task.tasks.task);
 
     useEffect(() => {
         dispatch(getTasks());
@@ -36,9 +36,13 @@ const Tasks = () => {
             </div>
             <div className="tasks__body">
                 {
-                    tasks.length > 0 && tasks.map(el => {
+                    tasks && tasks.map(el => {
                         return (
-                            <div className="tasks__item"></div>
+                            <div className="tasks__item">
+                                {
+                                    el.name
+                                }
+                            </div>
                         );
                     })
                 }

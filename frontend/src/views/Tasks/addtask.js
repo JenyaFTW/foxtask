@@ -25,12 +25,14 @@ const AddTask = props => {
             description: descRef.current.value,
             importance: priorityRef.current.value,
             estimated_time: etaRef.current.value,
+            difficulty: etaRef.current.value,
             deadline: selectedDay.toISOString().slice(0, 19).replace('T', ' '),
             type: 'consistent',
             subTasks
         };
 
         dispatch(createTask(task));
+        props.setPopupOpen(false);
     };
 
     const handleDayClick = day => {
