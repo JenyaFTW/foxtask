@@ -34,8 +34,8 @@ const Tasks = () => {
                     <div className="tasks__tags">red, grey, blue</div>
                 </div>
             </div>
-            { scheduleOpen && <Schedule /> }
-            
+            { scheduleOpen && <Schedule scheduleOpen={scheduleOpen} setScheduleOpen={setScheduleOpen}/> }
+            {/* <Schedule scheduleOpen={scheduleOpen} setScheduleOpen={setScheduleOpen}/> */}
         </div>
     );
 };
