@@ -26,7 +26,7 @@ export class HelperService {
     }
 
     checkValidBodyUser(body: userCreateBody | userUpdateBody): boolean {
-        /*let flag: boolean = true;
+        let flag: boolean = true;
         const nameRx: RegExp = /([A-Za-z._])\w+/;
         const emailRx: RegExp = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$/;
         const passwordRx: RegExp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/g;
@@ -41,7 +41,7 @@ export class HelperService {
             else if(key === "password" && !passwordRx.test(body[key])) {
                 flag = false;
             }
-        }*/
+        }
         return true;
     }
 
