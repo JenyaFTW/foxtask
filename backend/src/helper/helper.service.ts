@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, Injectable } from "@nestjs/common";
 import { createTaskBody, queryTaskGet, updateTaskBody } from "src/task/task.interface";
 import { userCreateBody, userUpdateBody } from "src/user/user.interface";
 import { Like } from "typeorm";
@@ -82,7 +82,6 @@ export class GenTimetable {
 
     function DayTimeWork(week: number[][], arrTimeWork: Array<any>){
         for (let i = 0; i < week.length; i++) {
-
             const day = week[i],
             dayArr = [];
 
@@ -90,6 +89,7 @@ export class GenTimetable {
             posStr = 0;
 
             for (let j = 0; j < day.length; j++){
+                
                 const hour = day[j];
 
                 if (hour === 0) {
@@ -166,9 +166,10 @@ export class GenTimetable {
                             //         throw new Error(`Don't enough time for ${currentTask.name}`);
                             //     }
                             // });
-
-                            taskSet = true;
-                            break outer;
+                            
+                            // taskSet = true;
+                            // break outer;
+                            throw new Error(`There isn't time for task ${currentTask.name}`);
                         }
                         
                         if(timeFree == scheduleWork[i][j].timeWork) {
