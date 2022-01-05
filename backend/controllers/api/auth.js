@@ -9,7 +9,7 @@ exports.postLogin = async (req, res) => {
             res.status(200).json({ message: 'Welcome' });
         }
     } catch(e) {
-        res.status(401).json({ message: e.message });
+        res.status(401).json({ message: e });
     }
 };
 
@@ -20,7 +20,7 @@ exports.postSignup = async (req, res) => {
             res.status(200).json({ message: 'Successfully registered user' });
         }
     } catch (e) {
-        res.status(400).json({ message: e.message });
+        res.status(400).json({ message: e });
     }
 };
 
