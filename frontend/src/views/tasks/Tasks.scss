@@ -1,0 +1,44 @@
+@import "../../_variables.scss";
+
+.tasks {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+}
+
+.header__tasks{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem;
+    font-weight: $font-w-semibold;
+
+}
+
+.count__tasks{
+    font-size: $font-s-medium;
+    color:$color-gray;
+}
+
+.btn__create__tasks{
+    width: 13rem;
+    height: 3.5rem;
+
+    font-size: $font-s-medium;
+    font-weight: $font-w-semibold;
+    border: none;
+    background: rgba(242, 153, 74, 0.1);
+    color:$color-orange;
+    border-radius: 1.4rem;
+}
+
+.all__task__singl{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width:1000px) {
+    .all__task__singl{
+        grid-template-columns: 1fr;
+    }
+}
