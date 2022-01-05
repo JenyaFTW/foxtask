@@ -1,11 +1,11 @@
-
 const Home = () => {
-
-    return (
-        <div id="home">
-            <h1>Home</h1>
-        </div>
-    );
+  return (
+    <div className="home main">
+      <div className="main__content">
+        <h1>Home</h1>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
