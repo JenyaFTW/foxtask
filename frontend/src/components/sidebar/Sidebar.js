@@ -1,5 +1,6 @@
 import './Sidebar.scss';
 import { useLocation, Link } from 'react-router-dom';
+import NavigationButton from '../navigationButton/navigationButton';
 
 import IconHome from '../../assets/home.svg';
 import IconHomeActive from '../../assets/home-active.svg';
@@ -67,16 +68,13 @@ const Sidebar = () => {
         <nav className="sidebar__nav">
           {routesTop.map((el) => {
             return (
-              <Link
-                to={el.path}
+              <NavigationButton
+                path={el.path}
+                name={el.name}
+                logo={el.logo}
+                logoActive={el.logoActive}
                 key={el.name}
-                className={`nav__item ${checkPath(el.path) ? 'nav__item--selected' : ''}`}>
-                <img
-                  className="nav__icon"
-                  alt="Tasks Sidebar Icon"
-                  src={checkPath(el.path) ? el.logoActive : el.logo}></img>
-                <span>{el.name}</span>
-              </Link>
+              />
             );
           })}
         </nav>
@@ -85,16 +83,13 @@ const Sidebar = () => {
         <nav className="sidebar__nav">
           {routesBottom.map((el) => {
             return (
-              <Link
-                to={el.path}
+              <NavigationButton
+                path={el.path}
+                name={el.name}
+                logo={el.logo}
+                logoActive={el.logoActive}
                 key={el.name}
-                className={`nav__item ${checkPath(el.path) ? 'nav__item--selected' : ''}`}>
-                <img
-                  className="nav__icon"
-                  alt="Tasks Sidebar Icon"
-                  src={checkPath(el.path) ? el.logoActive : el.logo}></img>
-                <span>{el.name}</span>
-              </Link>
+              />
             );
           })}
         </nav>

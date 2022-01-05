@@ -33,38 +33,6 @@
   flex-direction: column;
 }
 
-.nav__item {
-  cursor: pointer;
-  padding: 0.9rem 1.3rem;
-  font-size: $font-s-medium;
-  font-weight: $font-w-semibold;
-  border-radius: 1.4rem;
-  display: flex;
-  gap: $indent-xs;
-  align-items: center;
-  line-height: 1;
-  background: transparent;
-  transition: all 250ms ease;
-  color: $color-gray;
-  text-decoration: none;
-}
-
-.nav__item:hover {
-  background: $color-gray-light;
-}
-
-.nav__item--selected,
-.nav__item--selected:hover {
-  color: $color-orange;
-  background: $color-orange-light;
-}
-
-.nav__icon {
-  width: 1.7rem;
-  height: 1.7rem;
-  color: red;
-}
-
 .sidebar__copyright {
   margin-top: $indent-m;
   color: $color-gray;
