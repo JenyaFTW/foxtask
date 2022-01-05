@@ -1,27 +1,26 @@
-const { User } = require('../../models');
+const AuthService = require('../../services/auth');
+
+const authService = new AuthService();
 
 exports.postLogin = async (req, res) => {
     const { username, password } = req.body;
-    const user = await User.findByUsername(username);
-    if (user) {
-        if (user.password === password) {
+    try {
+        if (await authService.login(username, password)) {
             res.status(200).json({ message: 'Welcome' });
-        } else {
-            res.status(401).json({ message: 'Invalid username/password' });
         }
-    } else {
-        res.status(401).json({ message: 'Invalid username/password' });
+    } catch(e) {
+        res.status(401).json({ message: e.message });
     }
 };
 
 exports.postSignup = async (req, res) => {
+    const { username, password, name } = req.body;
     try {
-        const user = new User(req.body);
-        if (await user.save()) {
+        if (await authService.signup(username, password, name)) {
             res.status(200).json({ message: 'Successfully registered user' });
         }
     } catch (e) {
-        res.status(400).json({ message: e.detail });
+        res.status(400).json({ message: e.message });
     }
 };
 
