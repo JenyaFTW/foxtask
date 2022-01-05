@@ -5,8 +5,9 @@ const authService = new AuthService();
 exports.postLogin = async (req, res) => {
     const { username, password } = req.body;
     try {
-        if (await authService.login(username, password)) {
-            res.status(200).json({ message: 'Welcome' });
+        const token = await authService.login(username, password);
+        if (token) {
+            res.status(200).json({ token });
         }
     } catch(e) {
         res.status(401).json({ message: e });
@@ -24,6 +25,13 @@ exports.postSignup = async (req, res) => {
     }
 };
 
-exports.getMe = (req, res) => {
-
+exports.getMe = async (req, res) => {
+    try {
+        const user = await authService.find(res.locals.username);
+        if (user) {
+            res.status(200).json(user);
+        }
+    } catch (e) {
+        res.status(400).json({ message: e });
+    }
 };

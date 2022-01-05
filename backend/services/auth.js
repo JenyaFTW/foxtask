@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class AuthService {
     async login(username, password) {
@@ -8,7 +9,7 @@ class AuthService {
             if (user) {
                 bcrypt.compare(password, user.password, (err, result) => {
                     if (result) {
-                        resolve(true);
+                        resolve(jwt.sign({ username }, process.env.JWT_SECRET));
                     } else {
                         reject('Invalid username/password');
                     }
@@ -19,14 +20,15 @@ class AuthService {
         });
     }
 
-    async signup(username, password, name = undefined) {
+    async signup(username, password, name = null) {
         return new Promise((resolve, reject) => {
             bcrypt.hash(password, 10, async (err, hash) => {
                 const user = new User({
                     username,
-                    password: hash,
-                    name
+                    password: hash
                 });
+
+                if (name) user.name = name;
 
                 try {
                     if (await user.save()) {
@@ -37,6 +39,18 @@ class AuthService {
                 }
             });
         });
+    }
+
+    async find(username) {
+        const user = await User.findByUsername(username);
+        if (user) {
+            return {
+                username: user.username,
+                name: user.name
+            };
+        } else {
+            throw new Error('No such user');
+        }
     }
 }
 
