@@ -63,7 +63,7 @@ User.findAll = async function() {
     }
 
     return users;
-}
+};
 
 User.findById = async function(id) {
     const { rows } = await db.query(`
@@ -75,7 +75,7 @@ User.findById = async function(id) {
     if (rows.length > 0) {
         return new User(rows[0]);
     }
-}
+};
 
 User.findByUsername = async function(username) {
     const { rows } = await db.query(`
@@ -87,7 +87,7 @@ User.findByUsername = async function(username) {
     if (rows.length > 0) {
         return new User(rows[0]);
     }
-}
+};
 
 User.prototype.save = async function() {
     const { rows } = await db.query(`
@@ -105,6 +105,6 @@ User.prototype.drop = async function() {
         DELETE FROM Users
         WHERE id='${this.id}'
     `);
-}
+};
 
 module.exports = User;
