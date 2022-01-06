@@ -37,9 +37,9 @@ const Task = ({name, date, type, subtasks}) =>{
                     <span className="tag__task">{tag}</span>
                     <span className="tag__task">{tag}</span>
                 </div>
-                    {subtasks ? subtasks.map(({name, date}) => {
+                    {subtasks ? subtasks.map(({name, date}, index) => {
                         return(
-                            <div className="multiTasks__task">
+                            <div className="multiTasks__task" key={index}>
                                 <div className="subtask__task">
                                     <div className="name__date__task">
                                         <span className="name__task">{name}</span>
