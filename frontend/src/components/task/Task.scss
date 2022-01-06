@@ -1,0 +1,89 @@
+@import "../../_variables.scss";
+
+.task{
+    padding: 1.7rem;
+    margin: 1rem;
+
+    font-weight: $font-w-semibold;
+    background: $color-white;
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.header__task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 1rem;
+}
+
+.name__task{
+    font-size: $font-s-medium;
+    color:$color-black;
+}
+
+.icon__task{
+    display: flex;
+    align-items:center;
+    gap: 2rem;
+}
+
+.body__task{
+    font-size: $font-s-small;
+}
+
+.date__calendar__task{
+    display: flex;
+    align-items:center;
+    color:$color-gray;
+}
+
+.divider__task{
+    width: 0.4rem;
+    height: 0.4rem;
+    margin: 0rem 2rem;
+    background-color:$color-gray;
+    border-radius: 50%;
+}
+
+.tags__task{
+    display: flex;
+    margin: 1rem;
+    justify-content: flex-start;
+    gap:1rem;
+}
+
+.tag__task{
+    padding: 0.5rem 1rem;
+    color: #2F80ED;
+    background-color: rgba(47, 128, 237, 0.1);
+    border-radius: 1rem;
+}
+
+.multiTasks__task{
+    width: 100%;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    background-color: #FAFAFA;
+}
+
+.subtask__task{
+    padding: 0.5rem 1rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name__date__task{
+    display: flex;
+    flex-direction: column;
+}
+
+.type__task{
+    color:$color-gray
+}
+
