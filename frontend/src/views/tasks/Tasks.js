@@ -1,4 +1,5 @@
 import Task from "../../components/task/Task";
+import AddAndCreate from "../../components/allAndCreate/allAndCreate";
 
 import "./Tasks.scss";
 
@@ -46,11 +47,8 @@ const Tasks = () => {
     ];
 
     return(
-        <div className="tasks">
-            <div className="header__tasks">
-                <div className="count__tasks">2 Tasks 2 All-day events</div>
-                <button type="button" className="btn__create__tasks">Create Task</button>
-            </div>
+        <div className="tasks main">
+            <AddAndCreate />
             <div className="all__tasks">
                 {tasks.map(({name, date, type, subtasks}, index) => {
                     return(
@@ -61,7 +59,6 @@ const Tasks = () => {
                               key={index}/>
                     )
                 })}
-
             </div>
         </div>
     )

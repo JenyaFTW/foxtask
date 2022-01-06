@@ -37,10 +37,11 @@ const Task = ({name, date, type, subtasks}) =>{
                     <span className="tag__task">{tag}</span>
                     <span className="tag__task">{tag}</span>
                 </div>
-                    {subtasks ? subtasks.map(({name, date}, index) => {
-                        return(
-                            <div className="multiTasks__task" key={index}>
-                                <div className="subtask__task">
+                    {subtasks ?
+                        <div className="multiTasks__task" >
+                        {subtasks ? subtasks.map(({name, date}, index) => {
+                            return(
+                                <div className="subtask__task" key={index}>
                                     <div className="name__date__task">
                                         <span className="name__task">{name}</span>
                                         <div  className="date__calendar__task">
@@ -51,9 +52,10 @@ const Task = ({name, date, type, subtasks}) =>{
                                     </div>
                                     <img alt="Button check down" src={IconCheckDown} />
                                 </div>
-                            </div>
-                        )
-                    }) : ''}
+                            )
+                        }) : ''}
+                        </div>
+                    : ''}
                 <span className="type__task">{type}</span>
             </div>
         </div>
