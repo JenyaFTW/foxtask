@@ -8,7 +8,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 320px 1fr;
-  grid-template-rows: 90px 1fr;
+  grid-template-rows: auto 1fr;
 }
 
 .sidebar,
@@ -22,20 +22,19 @@
 .sidebar {
   grid-column: 1/2;
   grid-row: 1/-1;
-  background: red;
+  // background: red;
 }
 
 .header {
   grid-column: 2/-1;
   grid-row: 1/2;
-  background: green;
+  // background: green;
 }
 
 .main {
   grid-column: 2/-1;
   grid-row: 2/-1;
-  background: blue;
-  font-size: 20px;
+  // background: blue;
 }
 
 .main__content {

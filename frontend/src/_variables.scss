@@ -4,6 +4,8 @@ $indent-m: 3rem; // 30
 $indent-s: 1.5rem; // 15
 $indent-xs: 1rem; // 10
 
+// border
+$border-rad: 1.5rem;
 // fonts
 $font-s-large: 2.4rem;
 $font-s-medium: 1.8rem;
@@ -14,6 +16,7 @@ $font-w-semibold: 600;
 $font-w-bold: 700;
 
 // colors
+$color-white: #ffffff;
 $color-black: #333333;
 $color-orange: #f2994a;
 $color-orange-light: #fef5ed;
@@ -24,4 +27,3 @@ $color-green-light: #eaf7f0;
 $color-gray: #9ca3af;
 $color-gray-light: #f6f6f7;
 $color-gray-light-border: #f2f2f2;
-$color-white: #ffffff;
