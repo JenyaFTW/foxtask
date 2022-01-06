@@ -1,15 +1,11 @@
 @import "../../_variables.scss";
 
-.tasks {
-    width: 100%;
-    height: auto;
-    overflow: auto;
-}
-
-.all__tasks{
-    padding: 0rem 2rem;
+.tasks__list{
+    padding: $indent-m;
+    padding-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: $indent-m;
 }
 
 @media screen and (max-width:1100px) {

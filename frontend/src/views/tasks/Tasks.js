@@ -48,17 +48,19 @@ const Tasks = () => {
 
     return(
         <div className="tasks main">
-            <AddAndCreate />
-            <div className="all__tasks">
-                {tasks.map(({name, date, type, subtasks}, index) => {
-                    return(
-                        <Task name={name}
-                              date={date}
-                              type={type}
-                              subtasks={subtasks}
-                              key={index}/>
-                    )
-                })}
+            <div className="tasks__content main__content">
+                <AddAndCreate />
+                <div className="tasks__list">
+                    {tasks.map(({name, date, type, subtasks}, index) => {
+                        return(
+                            <Task name={name}
+                                date={date}
+                                type={type}
+                                subtasks={subtasks}
+                                key={index}/>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
