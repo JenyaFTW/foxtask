@@ -1,6 +1,6 @@
 import './Header.scss';
 import { useState } from 'react';
-import NavigationButton from '../navigationButton/navigationButton';
+import NavigationButton from '../navigationButton/NavigationButton';
 
 import ImgAvatar from '../../assets/test.jpg';
 import IconSettings from '../../assets/settings.svg';
@@ -8,7 +8,6 @@ import IconSettingsActive from '../../assets/settings-active.svg';
 import IconLogout from '../../assets/logout.svg';
 import IconLogoutActive from '../../assets/logout-active.svg';
 import IconDropDown from '../../assets/dropdown.svg';
-import IconDropUp from '../../assets/dropup.svg';
 
 const routes = [
   {

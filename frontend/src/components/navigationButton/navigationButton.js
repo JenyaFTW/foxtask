@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
-import './navigationButton.scss';
+import './NavigationButton.scss';
 
-const navigationButton = ({ path, name, logo, logoActive }) => {
+const NavigationButton = ({ path, name, logo, logoActive }) => {
   const history = useLocation();
   const checkPath = (path) => history.pathname === path;
   return (
@@ -20,4 +20,4 @@ const navigationButton = ({ path, name, logo, logoActive }) => {
   );
 };
 
-export default navigationButton;
+export default NavigationButton;

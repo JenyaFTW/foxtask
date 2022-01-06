@@ -1,0 +1,32 @@
+@import "../../_variables.scss";
+
+.calendar{
+    display: grid;
+    grid-template-rows:auto minmax(35rem, 1fr);
+}
+
+.main__content{
+    padding: 0rem 2rem;
+    height: 100%;
+    grid-template-columns: 1fr;
+}
+
+.week__calendar{
+    display: grid;
+    grid-template-columns:repeat(7, minmax(7rem, 1fr));
+    color: $color-gray;
+    font-weight: $font-w-semibold;
+    font-size: $font-s-small;
+    padding: 1rem 0rem;
+}
+
+.days__calendar{
+    display: grid;
+    height: 90%;
+
+    grid-template-columns:repeat(7,  minmax(7rem, 1fr));
+    grid-template-rows: repeat(5, 1fr);
+    border-radius: 2rem;
+    border: 1px solid;
+    border-color:$color-gray-light-border;
+}

@@ -1,5 +1,5 @@
 import './Sidebar.scss';
-import NavigationButton from '../navigationButton/navigationButton';
+import NavigationButton from '../navigationButton/NavigationButton';
 
 import IconHome from '../../assets/home.svg';
 import IconHomeActive from '../../assets/home-active.svg';

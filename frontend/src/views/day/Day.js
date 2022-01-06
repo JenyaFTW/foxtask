@@ -1,8 +1,10 @@
+import AddAndCreate from "../../components/allAndCreate/allAndCreate";
+
 const Day = () => {
   return (
     <div className="day main">
+      <AddAndCreate />
       <div className="main__content">
-        <h1>Day</h1>
       </div>
     </div>
   );
