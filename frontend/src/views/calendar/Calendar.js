@@ -29,7 +29,7 @@ const Calendar = () => {
   return (
     <div className="calendar main">
         <AddAndCreate className="create__calendar"/>
-      <div className="main__content">
+      <div className="calendar__content main__content">
         <div align="center" className="week__calendar">
         {weekDays.map((day, index) => {
             return(
