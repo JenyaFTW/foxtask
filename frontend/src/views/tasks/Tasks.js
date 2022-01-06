@@ -9,7 +9,7 @@ const Tasks = () => {
                 <div className="count__tasks">2 Tasks 2 All-day events</div>
                 <button type="button" className="btn__create__tasks">Create Task</button>
             </div>
-            <div className="all__task__singl">
+            <div className="all__tasks">
                 <Task name='Buy products'
                     date='Until March 3, 2022 8:00 PM'
                     type='Easy task #83'/>
@@ -23,7 +23,7 @@ const Tasks = () => {
                     date='Until March 3, 2022 8:00 PM'
                     type='Easy task #83'/>
             </div>
-            <div className="all__task__multifunctional">
+            <div className="all__tasks">
                 <Task name='Buy products'
                       date='Until March 3, 2022 8:00 PM'
                       type='Multifunctional task #83'
