@@ -1,5 +1,4 @@
 import './Sidebar.scss';
-import { useLocation, Link } from 'react-router-dom';
 import NavigationButton from '../navigationButton/navigationButton';
 
 import IconHome from '../../assets/home.svg';
@@ -58,9 +57,6 @@ const routesBottom = [
 ];
 
 const Sidebar = () => {
-  const history = useLocation();
-  const checkPath = (path) => history.pathname === path;
-
   return (
     <div className="sidebar">
       <div className="sidebar__top">
