@@ -1,4 +1,4 @@
-import AddAndCreate from "../../components/allAndCreate/allAndCreate";
+import AddAndCreate from "../../components/allAndCreate/AllAndCreate";
 
 const Day = () => {
   return (

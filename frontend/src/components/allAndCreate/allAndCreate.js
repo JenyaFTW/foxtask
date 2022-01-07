@@ -1,7 +1,7 @@
-import CreateTask from "../createTask/createTask.js";
+import CreateTask from "../createTask/CreateTask.js";
 import { useState, useEffect } from 'react';
 
-import "./allAndCreate.scss";
+import "./AllAndCreate.scss";
 
 const allAndCreate = () => {
     const [isModal, setModal] = useState(false)

@@ -1,5 +1,5 @@
-import AddAndCreate from "../../components/allAndCreate/allAndCreate";
-import DayCalendar from "../../components/dayCalendar/dayCalendar";
+import AddAndCreate from "../../components/allAndCreate/AllAndCreate";
+import DayCalendar from "../../components/dayCalendar/DayCalendar";
 
 import "./Calendar.scss";
 
