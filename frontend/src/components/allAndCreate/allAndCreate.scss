@@ -1,28 +1,27 @@
-@import "../../_variables.scss";
+@import '../../_variables.scss';
 
-.header__tasks{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 3rem;
-    font-weight: $font-w-semibold;
+.header__tasks {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  font-weight: $font-w-semibold;
 }
 
-.count__tasks{
-    font-size: $font-s-medium;
-    color:$color-gray;
+.count__tasks {
+  font-size: $font-s-medium;
+  color: $color-gray;
 }
 
-.btn__create__tasks{
-    width: 13rem;
-    height: 3.5rem;
-
-    cursor: pointer;
-    font-size: $font-s-medium;
-    font-weight: $font-w-semibold;
-    border: none;
-    background: rgba(242, 153, 74, 0.1);
-    color:$color-orange;
-    border-radius: 1.4rem;
+.btn__create__tasks {
+  cursor: pointer;
+  padding: 0.9rem 1.3rem;
+  font-size: $font-s-medium;
+  font-weight: $font-w-semibold;
+  border: none;
+  background: $color-orange-light;
+  color: $color-orange;
+  border-radius: 1.4rem;
+  line-height: 100%;
 }
