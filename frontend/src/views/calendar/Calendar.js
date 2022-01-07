@@ -1,26 +1,29 @@
-import AddAndCreate from "../../components/allAndCreate/allAndCreate";
-import DayCalendar from "../../components/dayCalendar/dayCalendar";
+import AddAndCreate from '../../components/allAndCreate/allAndCreate';
+import DayCalendar from '../../components/dayCalendar/dayCalendar';
 
-import "./Calendar.scss";
+import './Calendar.scss';
 
 const Calendar = () => {
   const days = [];
-  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const tasks = [
-  {
-    name: 'За что гнобят 1',
-    calendar: 'Work',
-  }, {
-    name: 'За что гнобят 2',
-    calendar: 'Work',
-  },{
-    name: 'За что гнобят 3',
-    calendar: 'Work',
-  },{
-    name: 'За что гнобят 4',
-    calendar: 'Work',
-  },
-];
+    {
+      name: 'За что гнобят 1zxczxczxczxczxczxczxczxc',
+      calendar: 'Work'
+    },
+    {
+      name: 'За что гнобят 2',
+      calendar: 'Work'
+    },
+    {
+      name: 'За что гнобят 3',
+      calendar: 'Work'
+    },
+    {
+      name: 'За что гнобят 4',
+      calendar: 'Work'
+    }
+  ];
 
   for (let index = 0; index < 35; index++) {
     days.push(index);
@@ -28,22 +31,18 @@ const Calendar = () => {
 
   return (
     <div className="calendar main">
-        <AddAndCreate className="create__calendar"/>
+      <AddAndCreate className="calendar__header" />
       <div className="calendar__content main__content">
-        <div align="center" className="week__calendar">
-        {weekDays.map((day, index) => {
-            return(
-              <span key={index}>{day}</span>
-            )
-          })}
+        <div className="calendar__week">
+          {weekDays.map((day, index) => (
+            <span className="week__item" key={index}>
+              {day}
+            </span>
+          ))}
         </div>
-        <div className="days__calendar">
+        <div className="calendar__sheet">
           {days.map((day, index) => {
-            return(
-              <DayCalendar day={day}
-                           key={index}
-                           tasks={tasks}/>
-            )
+            return <DayCalendar day={day} key={index} tasks={tasks} />;
           })}
         </div>
       </div>
