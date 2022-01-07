@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import "./RenderTimeDo.scss";
 
-const RenderTimeDo = ({visible}) => {
+const RenderTimeDo = ({visible, isForm, setForm}) => {
 
-  const [isTime, setTime] = useState('1 hours');
-
+  const [info, setinfo] = useState(null);
+  console.log(isForm);
   const getTime = () => {
     const MAX_ESTIMATE = 24;
     const arrClock = [];
@@ -27,51 +27,57 @@ const RenderTimeDo = ({visible}) => {
     return arrClock;
   }
 
-  const info = {};
-  if(visible === 'Manually'){
-    info.explanation = 'This task will be considered as a note. You must set time manually';
-    info.dayName = 'Day';
-    info.columnTwo = 'From';
-    info.getTime = getTime();
-    info.columnThree = 'To';
-    info.columnThreeRowTwo = getTime();
-  } else {
-    info.explanation = 'This task will be handled by algorithm basing on the deadline, priority of the task, your free time and workload';
-    info.dayName = 'Deadline';
-    info.columnTwo = 'Estimate time';
-    info.getTime = getTime();
-    info.columnThree = 'Priority';
-    info.columnThreeRowTwo = ['No Priority', 'Low Priority', 'Medium Priority', 'High Priority'];
-  }
+  useEffect(() => {
+    if(visible === 'Manually'){
+      setinfo({
+        explanation: 'This task will be considered as a note. You must set time manually',
+        dayName: 'Day',
+        columnTwo: 'From',
+        getTime: getTime(),
+        columnThree: 'To',
+        columnThreeRowTwo: getTime(),
+      });
+
+    } else {
+      setinfo({
+        explanation: 'This task will be handled by algorithm basing on the deadline, priority of the task, your free time and workload',
+        dayName: 'Deadline',
+        columnTwo: 'Estimate time',
+        getTime: getTime(),
+        columnThree: 'Priority',
+        columnThreeRowTwo: ['No Priority', 'Low Priority', 'Medium Priority', 'High Priority'],
+      })
+    }
+  }, [visible]);
 
 
 
   return(
     <div className="manager__timer__modal">
-      <span className="info__explanation__modal">{info.explanation}</span>
+      <span className="info__explanation__modal">{info ? info.explanation : ''}</span>
       <div className="time__do__modal">
           <div className="day__or__deadline colum__time__do__modal">
-              <label>{info.dayName}</label>
-              <input className="select__btn__modal" type="date"></input>
+              <label>{info ? info.dayName : ''}</label>
+              <input value={isForm ? isForm.day : ''} onChange={(e) => setForm({...isForm, day: e.target.value})} className="select__btn__modal" type="date"></input>
           </div>
           <div className="colum__time__do__modal">
-              <label>{info.columnTwo}</label>
-              <select value={isTime} onChange={(e) => setTime(e.target.value)} className="select__btn__modal">
-                {info.getTime.map((clock, index) => {
+              <label>{info ? info.columnTwo : ''}</label>
+              <select value={isForm ? isForm.timeFrom : ''} onChange={(e) => setForm({...isForm, timeFrom: e.target.value})} className="select__btn__modal">
+                {info ? info.getTime.map((clock, index) => {
                   return(
                     <option key={index}>{clock}</option>
                   )
-                })}
+                }) : ''}
               </select>
           </div>
           <div className="colum__time__do__modal">
-              <label>{info.columnThree}</label>
-              <select className="select__btn__modal">
-                {info.columnThreeRowTwo.map((clock, index) => {
+              <label>{info ? info.columnThree : ''}</label>
+              <select value={isForm ? isForm.priorityTo : ''} onChange={(e) => setForm({...isForm, priorityTo: e.target.value})} className="select__btn__modal">
+                {info ? info.columnThreeRowTwo.map((clock, index) => {
                   return(
                       <option key={index}>{clock}</option>
                   )
-                })}
+                }) : ''}
                 </select>
           </div>
       </div>
