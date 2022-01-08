@@ -1,0 +1,103 @@
+@import '../../variables';
+
+.login__wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: $indent-m;
+  background: $color-white;
+  border-radius: 1.5rem;
+  border: 1px solid $color-gray-light-border;
+  filter: drop-shadow(10px 10px 50px rgba(0, 0, 0, 0.05));
+}
+
+.login__nav {
+  padding: 0 $indent-m;
+  display: flex;
+  justify-content: center;
+  gap: $indent-s;
+  margin-bottom: $indent-m;
+}
+
+.login__nav__item {
+  font-size: $font-s-large;
+  font-weight: $font-w-bold;
+  color: $color-gray;
+  text-decoration: none;
+}
+
+.login__nav__item--active {
+  color: $color-black;
+}
+
+.form__item {
+  margin-bottom: $indent-s;
+}
+
+.form__password {
+  margin-bottom: $indent-m;
+}
+
+.form__item input {
+  width: 100%;
+  padding: $indent-s;
+  border: none;
+  background: $color-gray-light;
+  border-radius: $indent-s;
+}
+
+.form__item input,
+.form__item input::placeholder {
+  color: $color-gray;
+  font-size: $font-s-medium;
+  font-weight: $font-w-semibold;
+  //   line-height: 1;
+}
+
+.form__button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $indent-m;
+}
+
+.form__button input {
+  cursor: pointer;
+  padding: 0.9rem 1.3rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border: none;
+  background: $color-orange-light;
+  color: $color-orange;
+  border-radius: 1.4rem;
+  line-height: auto;
+}
+
+.login__recover,
+.login__info,
+.login__help__link {
+  font-size: $font-s-small;
+  font-weight: $font-w-medium;
+  color: $color-gray;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.login__recover {
+  margin-bottom: $indent-s;
+}
+
+.login__help__link {
+  transition: all 250ms ease;
+  text-decoration: none;
+}
+
+.login__help__link:hover {
+  color: $color-black;
+}
