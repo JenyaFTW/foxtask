@@ -11,7 +11,7 @@ class AuthService {
             if (user) {
                 bcrypt.compare(password, user.password, (err, result) => {
                     if (result) {
-                        resolve(jwt.sign({ username }, process.env.JWT_SECRET));
+                        resolve(jwt.sign({ id: user.id, username }, process.env.JWT_SECRET));
                     } else {
                         reject('Invalid username/password');
                     }

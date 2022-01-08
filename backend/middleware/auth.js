@@ -8,6 +8,7 @@ exports.authRequired = (req, res, next) => {
         try {
             const authToken = authHeader.split(' ')[1];
             const decoded = jwt.verify(authToken, process.env.JWT_SECRET);
+            res.locals.id = decoded.id;
             res.locals.username = decoded.username;
             next();
         } catch (e) {

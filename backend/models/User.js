@@ -1,11 +1,9 @@
-'use strict';
-
 const db = require('../lib/db');
 
 const UserSchema = {
     id: {
         required: false,
-        type: Number
+        type: String
     },
     username: {
         required: true,
@@ -13,8 +11,7 @@ const UserSchema = {
     },
     name: {
         required: false,
-        type: String,
-        default: 'Personal account'
+        type: String
     },
     password: {
         required: true,
@@ -29,10 +26,6 @@ function User(options) {
         } else {
             if (UserSchema[key].required) {
                 throw new Error(`${User.name} has required \`${key}\``);
-            } else {
-                if (UserSchema[key].default) {
-                    this[key] = UserSchema[key].default;
-                }
             }
         }
     }
@@ -77,7 +70,7 @@ User.findByUsername = async function(username) {
 
 User.prototype.save = async function() {
     const { rows } = await db.query(`
-        INSERT INTO Users(username, name, password)
+        INSERT INTO Users (username, name, password)
         VALUES ('${this.username}', '${this.name}', '${this.password}')
         RETURNING id
     `);
