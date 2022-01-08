@@ -1,46 +1,80 @@
-@import "../../_variables.scss";
+@import '../../_variables.scss';
 
-.day__calendar{
-    height: 100%;
-    border: 0.5px solid;
-    border-color:$color-gray-light-border;
-    display:flex;
-    flex-direction: column;
+.calendar__day {
+  height: 100%;
+  border: 0.5px solid;
+  border-color: $color-gray-light-border;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.circle__num__calendar{
-    height: 1.9rem;
-    width: 2.3rem;
-    background: $color-gray-light;
-    align-self: flex-end;
-    border-radius: 1rem;
-    margin: 0.5rem;
+.calendar__day:first-of-type {
+  border-radius: 2rem 0 0 0;
 }
 
-.num__day__calendar{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $color-gray;
-    font-size: $font-s-small;
-    font-weight: $font-w-semibold;
+.calendar__day:nth-of-type(7) {
+  border-radius: 0 2rem 0 0;
 }
 
-.tasks__calendar{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: $color-black;
-    font-weight: $font-w-medium;
-    font-size: 1rem;
+.calendar__day:nth-of-type(29) {
+  border-radius: 0 0 0 2rem;
 }
 
-.divider__calendar{
-    width: 0.5rem;
-    height: 0.5rem;
-    margin: 0.5rem ;
-    background-color:#FCAD38;
-    border-radius: 50%;
+.calendar__day:last-of-type {
+  border-radius: 0 0 2rem 0;
+}
+
+.calendar__num {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  color: $color-gray;
+  font-size: $font-s-small;
+  font-weight: $font-w-semibold;
+}
+
+.calendar__num span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2rem;
+  line-height: 1;
+}
+
+.calendar__num--today {
+  background-color: $color-gray-light;
+  border-radius: $indent-xs;
+}
+
+.calendar__task {
+  color: $color-black;
+  font-weight: $font-w-medium;
+  font-size: $font-s-xs;
+}
+
+.calendar__task span {
+  // 10px - one line
+  display: inline-block;
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.calendar__task span::before {
+  content: '';
+  position: absolute;
+  top: calc(5px - 0.5rem / 2);
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: $color-orange;
+  border-radius: 50%;
 }

@@ -18,45 +18,52 @@ const Task = ({name, date, type, subtasks}) =>{
 
     return(
         <div className="task">
-            <div className="header__task">
-                <span className="name__task">{name}</span>
-                <div className="icon__task">
+            <div className="task__header">
+                <span className="header__name">{name}</span>
+                <div className="header__icons">
                     <img onClick={notificationClick} alt="Logo" src={notification ? IconNotificationOn : IconNotificationOff} />
                     {subtasks ? '' : <img alt="Done tasks" src={IconCheckMarkDone}/> }
                     <img alt="Open full tasks" src={IconOpenFullTasks}/>
                 </div>
             </div>
-            <div className="body__task">
-                <div  className="date__calendar__task">
+            <div className="task__body">
+                <div className="body__date">
                     <span>{date}</span>
-                    <div className="divider__task"> </div>
+                    <div className="body__divider"></div>
                     <span>From {calendar}</span>
                 </div>
-                <div className="tags__task">
-                    <span className="tag__task">{tag}</span>
-                    <span className="tag__task">{tag}</span>
-                    <span className="tag__task">{tag}</span>
+                <div className="body__tags">
+                    <span className="body__tag">{tag}</span>
+                    <span className="body__tag">{tag}</span>
+                    <span className="body__tag">{tag}</span>
                 </div>
                     {subtasks ?
-                        <div className="multiTasks__task" >
+                        <div className="multitask">
                         {subtasks ? subtasks.map(({name, date}, index) => {
                             return(
-                                <div className="subtask__task" key={index}>
-                                    <div className="name__date__task">
-                                        <span className="name__task">{name}</span>
-                                        <div  className="date__calendar__task">
+                                <div className="task subtask" key={index}>
+                                    <div className="task__header">
+                                        <span className="header__name">{name}</span>
+                                        <div className="header__icons">
+                                            <img alt="Button check down" src={IconCheckDown}/>
+                                        </div>
+                                    </div>
+                                    <div className="task__body">
+                                        <div className="body__date">
                                             <span>{date}</span>
-                                            <div className="divider__task"> </div>
+                                            <div className="body__divider"></div>
                                             <span>From {calendar}</span>
                                         </div>
                                     </div>
-                                    <img alt="Button check down" src={IconCheckDown} />
                                 </div>
                             )
                         }) : ''}
                         </div>
                     : ''}
-                <span className="type__task">{type}</span>
+                    
+                <div className="task__type">
+                    <span>{type}</span>
+                </div>
             </div>
         </div>
     )

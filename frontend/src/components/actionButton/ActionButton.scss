@@ -1,0 +1,23 @@
+@import '../../_variables.scss';
+
+.action__button {
+  cursor: pointer;
+  padding: 0.9rem 1.3rem;
+  font-size: $font-s-medium;
+  font-weight: $font-w-semibold;
+  border: none;
+  background: $color-orange-light;
+  color: $color-orange;
+  border-radius: 1.4rem;
+  line-height: 1;
+  transition: all 250ms ease;
+}
+
+.action__button--hoveralbe {
+  background: $color-gray-light;
+  color: $color-gray;
+}
+
+.action__button--hoveralbe:hover {
+  color: $color-orange;
+}
