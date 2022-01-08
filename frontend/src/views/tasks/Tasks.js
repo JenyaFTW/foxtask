@@ -1,5 +1,5 @@
 import Task from "../../components/task/Task";
-import AddAndCreate from "../../components/allAndCreate/allAndCreate";
+import AddAndCreate from "../../components/allAndCreate/AllAndCreate";
 
 import "./Tasks.scss";
 
