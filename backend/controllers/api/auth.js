@@ -1,3 +1,5 @@
+'use strict';
+
 const AuthService = require('../../services/auth');
 
 const authService = new AuthService();

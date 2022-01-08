@@ -1,3 +1,5 @@
+'use strict';
+
 const db = require('../lib/db');
 
 const UserSchema = {
@@ -34,22 +36,6 @@ function User(options) {
             }
         }
     }
-};
-
-User.sync = async function() {
-    await db.query(`
-        CREATE TABLE Users (
-            id SERIAL,
-            username varchar(255),
-            name varchar(255),
-            password varchar(255),
-            UNIQUE(username)
-        );
-    `)
-};
-
-User.drop = async function() {
-    await db.query('DROP TABLE Users');
 };
 
 User.findAll = async function() {
