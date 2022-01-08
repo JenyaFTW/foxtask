@@ -1,0 +1,15 @@
+@import '../../_variables.scss';
+
+.tasks__list {
+  padding: $indent-m;
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $indent-m;
+}
+
+@media screen and (max-width: 1100px) {
+  .tasks__list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,100 @@
+@import "../../_variables.scss";
+
+.task{
+    padding: 15px 30px;
+
+    font-weight: $font-w-semibold;
+    background: $color-white;
+    border: 1px solid #F2F2F2;
+    border-radius: 1.5rem;
+}
+
+// Header
+
+.task__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.header__name{
+    font-size: $font-s-medium;
+    color:$color-black;
+}
+
+.header__icons{
+    display: flex;
+    align-items:center;
+    gap: 2rem;
+}
+
+.header__icons * {
+    cursor: pointer;
+}
+
+// Body
+
+.task__body{
+    font-size: $font-s-small;
+}
+
+.body__date{
+    display: flex;
+    align-items:center;
+    color:$color-gray;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.body__divider{
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color:$color-gray;
+    border-radius: 50%;
+}
+
+.body__tags{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.body__tag{
+    padding: 0.7rem 1rem;
+    color: #2F80ED;
+    background-color: rgba(47, 128, 237, 0.1);
+    border-radius: 1rem;
+    font-size: $font-s-small;
+    line-height: 1;
+}
+
+.multitask {
+    width: 100%;
+    border-radius: 1.5rem;
+    margin-top: $indent-xs;
+    padding: 1.5rem;
+    background-color: $color-gray-light;
+}
+
+// Subtask
+
+.subtask {
+    padding: 1rem 1.5rem;
+    margin-bottom: $indent-xs;
+}
+
+.subtask .body__date {
+    margin: 0;
+}
+
+// .subtask__date{
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.task__type{
+    margin-top: $indent-xs;
+    color: $color-gray;
+}
+

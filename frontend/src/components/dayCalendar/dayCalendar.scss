@@ -1,0 +1,80 @@
+@import '../../_variables.scss';
+
+.calendar__day {
+  height: 100%;
+  border: 0.5px solid;
+  border-color: $color-gray-light-border;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.calendar__day:first-of-type {
+  border-radius: 2rem 0 0 0;
+}
+
+.calendar__day:nth-of-type(7) {
+  border-radius: 0 2rem 0 0;
+}
+
+.calendar__day:nth-of-type(29) {
+  border-radius: 0 0 0 2rem;
+}
+
+.calendar__day:last-of-type {
+  border-radius: 0 0 2rem 0;
+}
+
+.calendar__num {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  color: $color-gray;
+  font-size: $font-s-small;
+  font-weight: $font-w-semibold;
+}
+
+.calendar__num span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2rem;
+  line-height: 1;
+}
+
+.calendar__num--today {
+  background-color: $color-gray-light;
+  border-radius: $indent-xs;
+}
+
+.calendar__task {
+  color: $color-black;
+  font-weight: $font-w-medium;
+  font-size: $font-s-xs;
+}
+
+.calendar__task span {
+  // 10px - one line
+  display: inline-block;
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.calendar__task span::before {
+  content: '';
+  position: absolute;
+  top: calc(5px - 0.5rem / 2);
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: $color-orange;
+  border-radius: 50%;
+}

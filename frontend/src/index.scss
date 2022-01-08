@@ -6,47 +6,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
-
-// padding/margin
-$indent-l: 6rem; // 60
-$indent-m: 3rem; // 30
-$indent-s: 1.5rem; // 15
-$indent-xs: 1rem; // 10
-
-// fonts
-$font-s-large: 2.4rem;
-$font-s-medium: 1.8rem;
-$font-s-small: 1.4rem;
-
-$font-w-medium: 500;
-$font-w-semibold: 600;
-$font-w-bold: 700;
-
-// colors
-$color-black: #333333;
-$color-orange: #f2994a;
-$color-orange-light: #fef5ed;
-$color-red: #f05c5c;
-$color-red-light: #feefef;
-$color-green: #27ae60;
-$color-green-light: #eaf7f0;
-$color-gray: #9ca3af;
-$color-gray-light: #f6f6f7;
-$color-gray-light-border: #f2f2f2;
 
 html,
 body,
 #app {
   width: 100%;
   height: 100%;
-  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 10px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

@@ -1,0 +1,36 @@
+@import '../../_variables.scss';
+
+.calendar {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.calendar__content {
+  padding: $indent-m;
+  padding-top: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.calendar__week {
+  height: auto;
+  display: flex;
+  color: $color-gray;
+  font-weight: $font-w-semibold;
+  font-size: $font-s-small;
+  padding: $indent-xs 0rem;
+}
+
+.week__item {
+  flex: 1;
+  text-align: center;
+}
+
+.calendar__sheet {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(7rem, 1fr));
+  grid-template-rows: repeat(5, 1fr);
+  border-radius: 2rem;
+  //   border: 1px solid $color-gray-light-border;
+}
