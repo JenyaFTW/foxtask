@@ -1,4 +1,4 @@
-import './dayCalendar.scss';
+import "./DayCalendar.scss";
 
 const DayCalendar = ({ day, index, tasks }) => {
   return (
