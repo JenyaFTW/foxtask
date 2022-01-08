@@ -53,10 +53,6 @@
   margin-bottom: $indent-s;
 }
 
-.form__password {
-  margin-bottom: $indent-m;
-}
-
 .login__field input {
   width: 100%;
   padding: $indent-s;
@@ -75,6 +71,7 @@
 }
 
 .form__button {
+  margin-top: $indent-m;
   display: flex;
   justify-content: center;
   margin-bottom: $indent-m;

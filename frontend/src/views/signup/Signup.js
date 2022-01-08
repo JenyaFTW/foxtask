@@ -27,6 +27,11 @@ const fields = [
     name: 'Password',
     className: 'password',
     type: 'password'
+  },
+  {
+    name: 'Confirm Password',
+    className: 'password',
+    type: 'password'
   }
 ];
 
