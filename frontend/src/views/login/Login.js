@@ -32,10 +32,10 @@ const Login = () => {
     <div className="login__wrapper">
       <div className="login">
         <nav className="login__nav">
-          {routes.map((el) => (
+          {routes.map((el, idx) => (
             <Link
               to={el.path}
-              key={el.name}
+              key={idx}
               className={`login__nav__item ${
                 checkPath(el.path) ? 'login__nav__item--active' : ''
               }`}>
@@ -44,14 +44,14 @@ const Login = () => {
           ))}
         </nav>
         <form action="" className="login__form" method="get">
-          {fields.map((el) => {
+          {fields.map((el, idx) => {
             return (
-              <div class={`form__${el.className} login__field`}>
+              <div key={idx} className={`form__${el.className} login__field`}>
                 <input type={el.type} name={el.type} id={el.type} required placeholder={el.name} />
               </div>
             );
           })}
-          <div class="form__button">
+          <div className="form__button">
             <input type="submit" value="Log In" />
           </div>
         </form>
@@ -62,7 +62,7 @@ const Login = () => {
         </div>
         <div className="login__info">
           <span>
-            By pressing "Log in", I accept that I have read
+            { 'By pressing "Log in", I accept that I have read' }
             <br /> and accepted the
             <Link to="/" key="Forgot password" className="login__help__link">
               <span> User Agreement</span>

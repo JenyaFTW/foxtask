@@ -54,14 +54,14 @@ const Signup = () => {
           ))}
         </nav>
         <form action="" className="login__form" method="get">
-          {fields.map((el) => {
+          {fields.map((el, idx) => {
             return (
-              <div class={`form__${el.className} login__field`}>
+              <div key={idx} className={`form__${el.className} login__field`}>
                 <input type={el.type} name={el.type} id={el.type} required placeholder={el.name} />
               </div>
             );
           })}
-          <div class="form__button">
+          <div className="form__button">
             <input type="submit" value="Log In" />
           </div>
         </form>
@@ -72,7 +72,7 @@ const Signup = () => {
         </div>
         <div className="login__info">
           <span>
-            By pressing "Create account", I accept that I
+            { 'By pressing "Create account", I accept that I' }
             <br /> have read and accepted the
             <Link to="/" key="Forgot password" className="login__help__link">
               <span> User Agreement</span>

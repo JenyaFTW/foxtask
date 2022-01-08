@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.18159735.css",
+    "main.js": "/static/js/main.27f618b2.js",
+    "static/media/test.jpg": "/static/media/test.335189e04d1fee5d612f.jpg",
+    "static/media/settings-active.svg": "/static/media/settings-active.6272c04ee4b8fca76d1b16ef47ebadd4.svg",
+    "static/media/settings.svg": "/static/media/settings.1a6a3f1f11928385dd70f32e34527423.svg",
+    "static/media/support-active.svg": "/static/media/support-active.4333c7e511849c8f2b61945ded143f1d.svg",
+    "static/media/support.svg": "/static/media/support.9d1bd00b3acc764d8e36a83008340af8.svg",
+    "static/media/openFullTasks.svg": "/static/media/openFullTasks.7e42b0469ddef3becfc1274e1103fe6a.svg",
+    "static/media/home-active.svg": "/static/media/home-active.174cbcb37c4572cfdfa65380f1c04ca1.svg",
+    "static/media/home.svg": "/static/media/home.0191c67b61d3913ae511250bac1dca45.svg",
+    "static/media/close.svg": "/static/media/close.cc32dca703b45c3e5ac95a56949fd2ce.svg",
+    "static/media/logout-active.svg": "/static/media/logout-active.8365d307887a3d3784521be17a4947c7.svg",
+    "static/media/logout.svg": "/static/media/logout.cb96885ae55dac34fca552dfcd5f07c2.svg",
+    "index.html": "/index.html",
+    "static/media/day-active.svg": "/static/media/day-active.f9d21b8b0a882152de2276e32f18f01b.svg",
+    "static/media/day.svg": "/static/media/day.4867ff0d846dca7299292a65e74ad177.svg",
+    "static/media/calendar-active.svg": "/static/media/calendar-active.bb3991fd76b94c43dbf4382810ac6446.svg",
+    "static/media/calendar.svg": "/static/media/calendar.9e06d23b1f8ad2c95eeff13ff6c00aed.svg",
+    "static/media/notificationOff.svg": "/static/media/notificationOff.698f87d525e3bfbc948db96c66edf7e6.svg",
+    "static/media/notificationOn.svg": "/static/media/notificationOn.0996b597c6951ef59a8a6032fa3a0aab.svg",
+    "static/media/tasks-active.svg": "/static/media/tasks-active.36f6d934917bfb58d7221acc0066d41d.svg",
+    "static/media/tasks.svg": "/static/media/tasks.6c6419f58eb11aa976d9d406db93900b.svg",
+    "static/media/checkMarkDown.svg": "/static/media/checkMarkDown.e4c4c565e2ce522bc57fcf3aadcda930.svg",
+    "static/media/checkMarkDone.svg": "/static/media/checkMarkDone.09152077c950bfa628cd677df5b50dcd.svg",
+    "static/media/dropdown.svg": "/static/media/dropdown.3496a1a57b0c5f46475e959e39e5594c.svg",
+    "main.18159735.css.map": "/static/css/main.18159735.css.map",
+    "main.27f618b2.js.map": "/static/js/main.27f618b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18159735.css",
+    "static/js/main.27f618b2.js"
+  ]
+}
