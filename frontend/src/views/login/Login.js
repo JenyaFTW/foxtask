@@ -12,6 +12,19 @@ const routes = [
   }
 ];
 
+const fields = [
+  {
+    name: 'Username',
+    className: 'username',
+    type: 'text'
+  },
+  {
+    name: 'Password',
+    className: 'password',
+    type: 'password'
+  }
+];
+
 const Login = () => {
   const history = useLocation();
   const checkPath = (path) => history.pathname === path;
@@ -31,12 +44,13 @@ const Login = () => {
           ))}
         </nav>
         <form action="" className="login__form" method="get">
-          <div class="form__username form__item">
-            <input type="text" name="username" id="username" required placeholder="Username" />
-          </div>
-          <div class="form__password form__item">
-            <input type="password" name="password" id="password" required placeholder="Password" />
-          </div>
+          {fields.map((el) => {
+            return (
+              <div class={`form__${el.className} login__field`}>
+                <input type={el.type} name={el.type} id={el.type} required placeholder={el.name} />
+              </div>
+            );
+          })}
           <div class="form__button">
             <input type="submit" value="Log In" />
           </div>
@@ -49,9 +63,9 @@ const Login = () => {
         <div className="login__info">
           <span>
             By pressing "Log in", I accept that I have read
-            <br /> and accepted the{' '}
+            <br /> and accepted the
             <Link to="/" key="Forgot password" className="login__help__link">
-              <span>User Agreement</span>
+              <span> User Agreement</span>
             </Link>
           </span>
         </div>

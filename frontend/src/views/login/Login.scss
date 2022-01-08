@@ -15,7 +15,19 @@
   background: $color-white;
   border-radius: 1.5rem;
   border: 1px solid $color-gray-light-border;
+  animation: loginAppear 250ms ease 0ms normal forwards;
   filter: drop-shadow(10px 10px 50px rgba(0, 0, 0, 0.05));
+}
+
+@keyframes loginAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .login__nav {
@@ -37,7 +49,7 @@
   color: $color-black;
 }
 
-.form__item {
+.login__field {
   margin-bottom: $indent-s;
 }
 
@@ -45,7 +57,7 @@
   margin-bottom: $indent-m;
 }
 
-.form__item input {
+.login__field input {
   width: 100%;
   padding: $indent-s;
   border: none;
@@ -53,12 +65,13 @@
   border-radius: $indent-s;
 }
 
-.form__item input,
-.form__item input::placeholder {
+.login__field input,
+.login__field input::placeholder {
   color: $color-gray;
   font-size: $font-s-medium;
   font-weight: $font-w-semibold;
-  //   line-height: 1;
+  font-family: 'Inter', sans-serif; // обязательно
+  transition: all 250ms ease;
 }
 
 .form__button {
