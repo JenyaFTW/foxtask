@@ -5,7 +5,7 @@ const path = require('path');
 exports.getSPA = (req, res) => {
     res.sendFile('index.html',
         {
-            root: path.join(__dirname, '..', '..', 'frontend', 'dist')
+            root: path.join(__dirname, '..', '..', 'frontend', 'build')
         }
     );
 };
