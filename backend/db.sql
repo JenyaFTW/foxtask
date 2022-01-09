@@ -15,12 +15,14 @@ CREATE TABLE Tasks (
     description text,
     tags text[],
     user_id UUID NOT NULL,
-    date date NOT NULL,
+    date date,
+	deadline date,
     automatic boolean NOT NULL,
     from_time time,
     to_time time,
     priority Priority,
     estimated_time time,
     CONSTRAINT id_Task PRIMARY KEY (id),
-    CONSTRAINT fk_User FOREIGN KEY(user_id) REFERENCES Users(id)
+    CONSTRAINT fk_User FOREIGN KEY(user_id) REFERENCES Users(id),
+	CONSTRAINT date_TASK CHECK (date IS NOT NULL OR deadline IS NOT NULL)
 );

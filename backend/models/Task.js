@@ -22,7 +22,11 @@ const TaskSchema = {
         type: String
     },
     date: {
-        required: true,
+        required: false,
+        type: Date
+    },
+    deadline: {
+        required: false,
         type: Date
     },
     automatic: {
