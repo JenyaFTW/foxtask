@@ -15,10 +15,10 @@ router.route('/signup').post(postSignup);
 router.route('/me').all(authRequired).get(getMe);
 
 router
-    .route('/tasks')
-    .all(authRequired)
-    .get(getAll)
-    .post(postTasks);
+  .route('/tasks')
+  .all(authRequired)
+  .get(getAll)
+  .post(postTasks);
 
 router.route('*').all(any);
 
