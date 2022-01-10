@@ -9,6 +9,12 @@ class TaskService {
     });
   }
 
+  async findById(id, uid) {
+    return new Promise(resolve => {
+      Task.findById(id, uid).then(task => resolve(task));
+    });
+  }
+
   async create(options) {
     return new Promise(resolve => {
       const task = new Task(options);

@@ -6,7 +6,7 @@ const router = express.Router();
 
 const { any } = require('../controllers/api');
 const { postLogin, postSignup, getMe } = require('../controllers/api/auth');
-const { getAll, postTasks } = require('../controllers/api/tasks');
+const { getAll, postTasks, getTask } = require('../controllers/api/tasks');
 
 const { authRequired } = require('../middleware/auth');
 
@@ -19,6 +19,11 @@ router
   .all(authRequired)
   .get(getAll)
   .post(postTasks);
+
+router
+  .route('/tasks/:taskId')
+  .all(authRequired)
+  .get(getTask);
 
 router.route('*').all(any);
 

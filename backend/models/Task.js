@@ -74,11 +74,11 @@ Task.findAll = async function() {
   return Tasks;
 };
 
-Task.findById = async function(id) {
+Task.findById = async function(id, user) {
   const { rows } = await db.query(`
         SELECT *
         FROM Tasks
-        WHERE id = '${id}'
+        WHERE id = '${id}' AND user_id = '${user}'
     `);
 
   if (rows.length > 0) {

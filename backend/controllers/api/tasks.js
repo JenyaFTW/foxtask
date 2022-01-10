@@ -11,6 +11,15 @@ exports.getAll = async (req, res) => {
   }
 };
 
+exports.getTask = async (req, res) => {
+  const { taskId } = req.params;
+  const { id } = res.locals;
+  if (id) {
+    const task = await taskService.findById(taskId, id);
+    res.status(200).json({ task });
+  }
+};
+
 exports.postTasks = async (req, res) => {
   const { id } = res.locals;
   if (id) {
