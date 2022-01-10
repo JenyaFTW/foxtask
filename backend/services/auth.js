@@ -7,19 +7,20 @@ const jwt = require('jsonwebtoken');
 class AuthService {
   async login(username, password) {
     return new Promise((resolve, reject) => {
-      const user = Promise.resolve(User.findByUsername(username));
-      if (user) {
-        bcrypt.compare(password, user.password, (err, result) => {
-          if (result) {
-            resolve(jwt.sign(
-              { id: user.id, username }, process.env.JWT_SECRET));
-          } else {
-            reject('Invalid username/password');
-          }
-        });
-      } else {
-        reject('Invalid username/password');
-      }
+      User.findByUsername(username).then(user => {
+        if (user) {
+          bcrypt.compare(password, user.password, (err, result) => {
+            if (result) {
+              resolve(jwt.sign(
+                { id: user.id, username }, process.env.JWT_SECRET));
+            } else {
+              reject('Invalid username/password');
+            }
+          });
+        } else {
+          reject('Invalid username/password');
+        }
+      });
     });
   }
 
