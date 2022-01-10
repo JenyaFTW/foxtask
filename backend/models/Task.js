@@ -3,52 +3,52 @@ const db = require('../lib/db');
 const TaskSchema = {
   id: {
     required: false,
-    type: String
+    type: String,
   },
   name: {
     required: true,
-    type: String
+    type: String,
   },
   description: {
     required: false,
-    type: String
+    type: String,
   },
   tags: {
     required: false,
-    type: Array
+    type: Array,
   },
   user_id: {
     required: true,
-    type: String
+    type: String,
   },
   date: {
     required: false,
-    type: Date
+    type: Date,
   },
   deadline: {
     required: false,
-    type: Date
+    type: Date,
   },
   automatic: {
     required: true,
-    type: Boolean
+    type: Boolean,
   },
   from_time: {
     required: false,
-    type: String
+    type: String,
   },
   to_time: {
     required: false,
-    type: String
+    type: String,
   },
   priority: {
     required: false,
-    type: String
+    type: String,
   },
   estimated_time: {
     required: false,
-    type: String
-  }
+    type: String,
+  },
 };
 
 function Task(options) {
@@ -61,7 +61,7 @@ function Task(options) {
   }
 }
 
-Task.findAll = async function() {
+Task.findAll = async function () {
   const { rows } = await db.query('SELECT * FROM Tasks');
   const Tasks = new Set();
 
@@ -74,11 +74,11 @@ Task.findAll = async function() {
   return Tasks;
 };
 
-Task.findById = async function(id) {
+Task.findById = async function (id, user) {
   const { rows } = await db.query(`
         SELECT *
         FROM Tasks
-        WHERE id = '${id}'
+        WHERE id = '${id}' AND user_id = '${user}'
     `);
 
   if (rows.length > 0) {
@@ -86,7 +86,19 @@ Task.findById = async function(id) {
   }
 };
 
-Task.findByUserId = async function(id) {
+Task.deleteById = async function (id, user) {
+  const { rows } = await db.query(`
+        DELETE
+        FROM Tasks
+        WHERE id = '${id}' AND user_id = '${user}'
+    `);
+
+  if (rows.length > 0) {
+    return new Task(rows[0]);
+  }
+};
+
+Task.findByUserId = async function (id) {
   const { rows } = await db.query(`
         SELECT *
         FROM Tasks
@@ -105,23 +117,27 @@ Task.findByUserId = async function(id) {
   return Tasks;
 };
 
-Task.prototype.save = async function() {
+Task.prototype.save = async function () {
   const keys = [...Object.keys(this)].join(', ');
   const items = [...Object.values(this)];
   const values = [...Object.keys(this)]
-    .map((_, idx) => `$${idx + 1}`).join(', ');
+    .map((_, idx) => `$${idx + 1}`)
+    .join(', ');
 
-  const { rows } = await db.query(`
+  const { rows } = await db.query(
+    `
         INSERT INTO Tasks (${keys})
         VALUES (${values})
         RETURNING id
-    `, items);
+    `,
+    items
+  );
 
   this.id = rows[0].id;
   return this;
 };
 
-Task.prototype.drop = async function() {
+Task.prototype.drop = async function () {
   await db.query(`
         DELETE FROM Tasks
         WHERE id='${this.id}'
