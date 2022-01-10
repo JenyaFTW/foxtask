@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon .",
     "lint": "eslint . --fix && prettier --write \"**/*.js\" \"**/*.json\""
   },
   "keywords": [],
@@ -23,5 +23,8 @@
     "prettier": "^2.5.1",
     "swagger-ui-express": "^4.3.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
