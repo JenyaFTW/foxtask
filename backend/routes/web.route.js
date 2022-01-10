@@ -3,12 +3,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { getSPA } = require('../controllers/web');
+const { getStatic, getFiles } = require('../controllers/web');
 
-router.route('*').get(getSPA);
-
-router.route('*').post((req, res) => {
-  res.status(400).send('You weren\'t supposed to see this');
-});
+router.use('/static', getStatic);
+router.get('*', getFiles);
 
 module.exports = router;
